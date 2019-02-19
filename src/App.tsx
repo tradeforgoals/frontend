@@ -5,10 +5,12 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import Login from "./containers/Login";
 
 const routes = (
   <Switch>
     <Route path="/profile" component={Profile} />
+    <Route path="/login" component={Login} />
     <Route path="/" exact component={Home} />
     <Redirect to="/" />
   </Switch>

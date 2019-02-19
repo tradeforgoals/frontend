@@ -21,6 +21,7 @@ const home = (props: Props) => {
       <Navigation>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </Navigation>
       <div>{children}</div>
     </>

@@ -31,6 +31,7 @@ const fetchUserSuccess = (state: UserState, action: Action): UserState => {
   return {
     ...state,
     loading: false,
+    isLoggedIn: true,
     username: action.username
   };
 };
@@ -48,12 +49,12 @@ const reducer = (
   action: Action
 ): UserState => {
   switch (action.type) {
-    // case actionTypes.LOGIN_START:
-    //   return fetchUserStart(state, action);
-    // case actionTypes.LOGIN_SUCCESS:
-    //   return fetchUserSuccess(state, action);
-    // case actionTypes.LOGIN_FAILED:
-    //   return fetchUserFail(state, action);
+    case actionTypes.LOGIN_USER:
+      return fetchUserStart(state, action);
+    case actionTypes.LOGIN_SUCCESS:
+      return fetchUserSuccess(state, action);
+    case actionTypes.LOGIN_FAILED:
+      return fetchUserFail(state, action);
     default:
       return state;
   }

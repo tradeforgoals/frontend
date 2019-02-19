@@ -15,6 +15,7 @@ export function* userLoginSaga(action: any) {
     const response = yield axios.post(url, loginData);
     yield put(action.loginSuccess(response.data));
   } catch (error) {
-    yield put(actions.loginFailed(error)); // TODO: check what error returns
+    console.error(error);
+    yield put(actions.loginFailed(error.message));
   }
 }
