@@ -6,11 +6,13 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Login from "./containers/Login";
+import Register from "./containers/Register";
 
 const routes = (
   <Switch>
     <Route path="/profile" component={Profile} />
     <Route path="/login" component={Login} />
+    <Route path="/register" component={Register} />
     <Route path="/" exact component={Home} />
     <Redirect to="/" />
   </Switch>

@@ -1,13 +1,9 @@
 import React, { Component, Props } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import { Redirect } from "react-router-dom";
 
 import * as actions from "../store/actions";
-
-const StyledLabel = styled.label`
-  display: block;
-`;
-
+import { StyledLabel } from "../styles/Form";
 interface StateProps extends Props<any> {
   isLoggedIn: boolean;
   error: string | null;
@@ -38,7 +34,10 @@ class Login extends Component<StateProps & DispatchProps, any> {
 
   render() {
     const { email, password } = this.state;
-    const { error } = this.props;
+    const { error, isLoggedIn } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <h1>Login</h1>

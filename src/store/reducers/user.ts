@@ -44,17 +44,29 @@ const fetchUserFail = (state: UserState, action: Action): UserState => {
   };
 };
 
+const registrationStart = (state: UserState, action: Action): UserState => {
+  return {
+    ...state,
+    loading: true,
+    error: null
+  };
+};
+
 const reducer = (
   state: UserState = initialState,
   action: Action
 ): UserState => {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
+    case actionTypes.LOGIN_START:
       return fetchUserStart(state, action);
     case actionTypes.LOGIN_SUCCESS:
       return fetchUserSuccess(state, action);
     case actionTypes.LOGIN_FAILED:
       return fetchUserFail(state, action);
+    case actionTypes.REGISTRATION_START:
+      return registrationStart(state, action);
+    case actionTypes.REGISTRATION_FAILED:
+      return fetchUserFail(state, action); // TODO: Make own function if login failed and registration failed become different
     default:
       return state;
   }
