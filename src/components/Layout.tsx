@@ -10,20 +10,32 @@ const Navigation = styled.div`
   padding: 1em 0;
 `;
 
-interface Props {
+interface InheritProps {
   children: ReactNode | null;
+  isLoggedIn: false;
 }
 
-const home = (props: Props) => {
-  const { children } = props;
-  return (
+const home = (props: InheritProps) => {
+  const { children, isLoggedIn } = props;
+  let navLinks = (
     <>
-      <Navigation>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/register">Register</NavLink>
+    </>
+  );
+
+  if (isLoggedIn) {
+    navLinks = (
+      <>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/profile">Profile</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
-      </Navigation>
+      </>
+    );
+  }
+  return (
+    <>
+      <Navigation>{navLinks}</Navigation>
       <div>{children}</div>
     </>
   );
