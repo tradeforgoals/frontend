@@ -8,4 +8,4 @@ export {
   registrationStart,
   registrationSuccess,
   registrationFailed
-} from "./user";
+} from './user';

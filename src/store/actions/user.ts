@@ -1,4 +1,5 @@
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from './actionTypes';
+import { Action } from 'redux';
 
 export interface LoginUserPayload {
   email: string;
@@ -15,7 +16,17 @@ export interface RegisterUserPayload {
   password_confirm: string;
 }
 
-export const loginUser = (payload: LoginUserPayload) => {
+export interface LoginUserAction extends Action {
+  type: string;
+  payload: LoginUserPayload;
+}
+
+export interface RegisterUserAction extends Action {
+  type: string;
+  payload: RegisterUserPayload;
+}
+
+export const loginUser = (payload: LoginUserPayload): LoginUserAction => {
   // TODO: specify payload
   return {
     type: actionTypes.LOGIN_USER,
@@ -29,7 +40,7 @@ export const loginStart = () => {
   };
 };
 
-export const loginSuccess = (user: any) => {
+export const loginSuccess = (user: object) => {
   return {
     type: actionTypes.LOGIN_SUCCESS,
     user
@@ -44,7 +55,7 @@ export const loginFailed = (error: string) => {
 };
 
 // Registration
-export const registerUser = (payload: RegisterUserPayload) => {
+export const registerUser = (payload: RegisterUserPayload): RegisterUserAction => {
   // TODO: specify payload
   return {
     type: actionTypes.REGISTER_USER,
@@ -57,7 +68,7 @@ export const registrationStart = () => {
   };
 };
 
-export const registrationSuccess = (payload: any) => {
+export const registrationSuccess = (payload: object) => {
   return {
     type: actionTypes.REGISTRATION_SUCCESS
   };

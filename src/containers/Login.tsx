@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import * as actions from "../store/actions";
-import { StyledLabel } from "../styles/Form";
-import { RootState } from "../store/sagas/RootState";
-import { Action, Dispatch } from "redux";
-import { LoginUserPayload } from "../store/actions/user";
+import * as actions from '../store/actions';
+import { StyledLabel } from '../styles/Form';
+import { RootState } from '../store/sagas/RootState';
+import { Action, Dispatch } from 'redux';
+import { LoginUserPayload } from '../store/actions/user';
 interface StateProps {
   isLoggedIn: boolean;
   error: string | null;
@@ -16,7 +16,7 @@ interface DispatchProps {
   onUserLogin: (user: LoginUserPayload) => void;
 }
 
-interface LoginProps extends StateProps, DispatchProps {}
+interface LoginProps extends StateProps, DispatchProps { }
 
 interface LoginState {
   email: string;
@@ -25,8 +25,8 @@ interface LoginState {
 
 class Login extends Component<LoginProps, LoginState> {
   public state: LoginState = {
-    email: "",
-    password: ""
+    email: '',
+    password: ''
   };
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {

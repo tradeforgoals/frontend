@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
-import { RouteComponentProps } from "react-router";
-import { connect } from "react-redux";
-import "./App.css";
+import React, { Component } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
+import { connect } from 'react-redux';
+import './App.css';
 
-import Layout from "./components/Layout";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import Login from "./containers/Login";
-import Register from "./containers/Register";
-import { RootState } from "./store/sagas/RootState";
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import Login from './containers/Login';
+import Register from './containers/Register';
+import { RootState } from './store/sagas/RootState';
 
 interface StateProps {
   isLoggedIn: boolean;
 }
 
-interface AppProps extends RouteComponentProps, StateProps {}
+interface AppProps extends RouteComponentProps, StateProps { }
 
 class App extends Component<AppProps> {
   public render(): JSX.Element {

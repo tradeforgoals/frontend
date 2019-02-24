@@ -5,7 +5,7 @@
   ],
   "jsRules": {},
   "rules": {
-    "eofline": true,
+    "eofline": false,
     "max-line-length": [
       true,
       120
@@ -27,7 +27,11 @@
         "jsx-double"
       ]
     },
-    "linebreak-style": [true, "LF"]
+    "linebreak-style": [true, "LF"],
+    "no-console": false,
+    "interface-over-type-literal": false,
+    "arrow-parens": false,
+    "no-any": true
   },
   "rulesDirectory": []
 }

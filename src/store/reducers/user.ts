@@ -1,6 +1,6 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from '../actions/actionTypes';
 interface Action {
-  type: any;
+  type: string;
   error: string | null;
   username: string | null; // TODO: Change to user object
 }
@@ -15,7 +15,7 @@ export interface UserState {
 const initialState: UserState = {
   loading: false,
   isLoggedIn: false,
-  username: "Thomas",
+  username: 'Thomas',
   error: null
 };
 
@@ -66,7 +66,8 @@ const reducer = (
     case actionTypes.REGISTRATION_START:
       return registrationStart(state, action);
     case actionTypes.REGISTRATION_FAILED:
-      return fetchUserFail(state, action); // TODO: Make own function if login failed and registration failed become different
+      // TODO: Make own function if login failed and registration failed become different
+      return fetchUserFail(state, action);
     default:
       return state;
   }

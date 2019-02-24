@@ -1,16 +1,18 @@
-import { put, call } from "redux-saga/effects";
-import axios from "axios";
+import { put } from 'redux-saga/effects';
+import axios from 'axios';
 
-import * as actions from "../actions/index";
+import * as actions from '../actions/index';
+import { LoginUserAction, RegisterUserAction } from '../actions/user';
 
-export function* userLoginSaga(action: any) {
+export function* userLoginSaga(action: LoginUserAction) {
+  console.log(action);
   yield put(actions.loginStart());
   const loginData = {
-    email: action.email,
-    password: action.password
+    email: action.payload.email,
+    password: action.payload.password
   };
 
-  const url = "/api/user/login";
+  const url = '/api/user/login';
   try {
     const response = yield axios.post(url, loginData);
     yield put(actions.loginSuccess(response.data));
@@ -20,9 +22,9 @@ export function* userLoginSaga(action: any) {
   }
 }
 
-export function* userRegistrationSaga(action: any) {
+export function* userRegistrationSaga(action: RegisterUserAction) {
   yield put(actions.registrationStart());
-  const url = "/api/user";
+  const url = '/api/user';
   try {
     const response = yield axios.put(url, action.payload);
     yield put(actions.registrationSuccess(response.data));

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import UserSettingsform from "./UserSettingsForm";
-import { RootState } from "../store/sagas/RootState";
+import UserSettingsform from './UserSettingsForm';
+import { RootState } from '../store/sagas/RootState';
 
 interface StateProps {
   isLoggedIn: boolean;
   username: string | null;
 }
 
-interface ProfileProps extends StateProps {}
+interface ProfileProps extends StateProps { }
 
 export interface ProfileState {
   username: string | null;
@@ -23,13 +23,13 @@ export interface ProfileState {
 
 class Profile extends Component<ProfileProps, ProfileState> {
   public state: ProfileState = {
-    username: "",
-    firstname: "",
-    lastname: "",
-    city: "",
-    email: "",
-    password: "",
-    password_confirm: ""
+    username: '',
+    firstname: '',
+    lastname: '',
+    city: '',
+    email: '',
+    password: '',
+    password_confirm: ''
   };
 
   public componentDidMount() {

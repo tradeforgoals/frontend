@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import * as actions from "../store/actions";
-import UserSettingsform from "../components/UserSettingsForm";
-import { RootState } from "../store/sagas/RootState";
-import { Dispatch, Action } from "redux";
-import { RegisterUserPayload } from "../store/actions/user";
+import * as actions from '../store/actions';
+import UserSettingsform from '../components/UserSettingsForm';
+import { RootState } from '../store/sagas/RootState';
+import { Dispatch, Action } from 'redux';
+import { RegisterUserPayload } from '../store/actions/user';
 
 interface StateProps {
   isLoggedIn: boolean;
@@ -17,18 +17,18 @@ interface DispatchProps {
   onUserRegister: (user: RegisterUserPayload) => void;
 }
 
-interface RegisterProps extends StateProps, DispatchProps {}
-interface RegisterState extends RegisterUserPayload {}
+interface RegisterProps extends StateProps, DispatchProps { }
+interface RegisterState extends RegisterUserPayload { }
 
 class Register extends Component<RegisterProps, RegisterState> {
   public state = {
-    username: "",
-    firstname: "",
-    lastname: "",
-    city: "",
-    email: "",
-    password: "",
-    password_confirm: ""
+    username: '',
+    firstname: '',
+    lastname: '',
+    city: '',
+    email: '',
+    password: '',
+    password_confirm: ''
   };
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
