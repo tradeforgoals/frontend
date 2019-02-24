@@ -9,13 +9,16 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
+import { RootState } from "./store/sagas/RootState";
 
 interface StateProps {
-  isLoggedIn: false;
+  isLoggedIn: boolean;
 }
 
-class App extends Component<RouteComponentProps & StateProps, any> {
-  render() {
+interface AppProps extends RouteComponentProps, StateProps {}
+
+class App extends Component<AppProps> {
+  public render(): JSX.Element {
     const { isLoggedIn } = this.props;
 
     let routes = (
@@ -43,7 +46,7 @@ class App extends Component<RouteComponentProps & StateProps, any> {
   }
 }
 
-const mapStateToProps = (state: any): StateProps => {
+const mapStateToProps = (state: RootState): StateProps => {
   return {
     isLoggedIn: state.user.isLoggedIn
   };

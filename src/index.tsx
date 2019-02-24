@@ -11,8 +11,9 @@ import * as serviceWorker from "./serviceWorker";
 
 import UserReducer from "./store/reducers/user";
 import { watchUser } from "./store/sagas";
+import { RootState } from "./store/sagas/RootState";
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers<RootState>({
   user: UserReducer
 });
 

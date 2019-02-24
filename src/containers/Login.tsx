@@ -1,38 +1,51 @@
-import React, { Component, Props } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import * as actions from "../store/actions";
 import { StyledLabel } from "../styles/Form";
-interface StateProps extends Props<any> {
+import { RootState } from "../store/sagas/RootState";
+import { Action, Dispatch } from "redux";
+import { LoginUserPayload } from "../store/actions/user";
+interface StateProps {
   isLoggedIn: boolean;
   error: string | null;
 }
 
-interface DispatchProps extends Props<any> {
-  onUserLogin: any;
+interface DispatchProps {
+  onUserLogin: (user: LoginUserPayload) => void;
 }
 
-class Login extends Component<StateProps & DispatchProps, any> {
-  state = {
+interface LoginProps extends StateProps, DispatchProps {}
+
+interface LoginState {
+  email: string;
+  password: string;
+}
+
+class Login extends Component<LoginProps, LoginState> {
+  public state: LoginState = {
     email: "",
     password: ""
   };
 
-  private handleFormChange = (e: any) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName = e.target.name as keyof LoginState;
 
-  private handleLoginSubmit = (e: any) => {
+    // @ts-ignore TS bug: https://github.com/Microsoft/TypeScript/issues/13948
+    this.setState({
+      [fieldName]: e.target.value
+    });
+  }
+
+  private handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password } = this.state;
     const { onUserLogin } = this.props;
     onUserLogin({ email, password });
-  };
+  }
 
-  render() {
+  public render() {
     const { email, password } = this.state;
     const { error, isLoggedIn } = this.props;
     if (isLoggedIn) {
@@ -78,16 +91,16 @@ class Login extends Component<StateProps & DispatchProps, any> {
   }
 }
 
-const mapStateToProps = (state: any): StateProps => {
+const mapStateToProps = (state: RootState): StateProps => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     error: state.user.error
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
-    onUserLogin: (payload: any) => dispatch(actions.loginUser(payload))
+    onUserLogin: (payload: LoginUserPayload) => dispatch(actions.loginUser(payload))
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -10,12 +10,11 @@ const Navigation = styled.div`
   padding: 1em 0;
 `;
 
-interface InheritProps {
-  children: ReactNode | null;
-  isLoggedIn: false;
+interface HomeProps {
+  isLoggedIn: boolean;
 }
 
-const home = (props: InheritProps) => {
+const Layout: React.SFC<HomeProps> = (props) => {
   const { children, isLoggedIn } = props;
   let navLinks = (
     <>
@@ -41,4 +40,4 @@ const home = (props: InheritProps) => {
   );
 };
 
-export default home;
+export default Layout;

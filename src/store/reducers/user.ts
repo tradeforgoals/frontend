@@ -5,7 +5,7 @@ interface Action {
   username: string | null; // TODO: Change to user object
 }
 
-interface UserState {
+export interface UserState {
   loading: boolean;
   isLoggedIn: boolean;
   username: string | null;

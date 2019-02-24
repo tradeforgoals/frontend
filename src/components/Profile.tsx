@@ -2,13 +2,27 @@ import React, { Component, Props } from "react";
 import { connect } from "react-redux";
 
 import UserSettingsform from "./UserSettingsForm";
-interface StateProps extends Props<any> {
+import { RootState } from "../store/sagas/RootState";
+
+interface StateProps {
   isLoggedIn: boolean;
   username: string | null;
 }
 
-class Profile extends Component<StateProps, any> {
-  state = {
+interface ProfileProps extends StateProps {}
+
+export interface ProfileState {
+  username: string | null;
+  firstname: string;
+  lastname: string;
+  city: string;
+  email: string;
+  password: string;
+  password_confirm: string;
+}
+
+class Profile extends Component<ProfileProps, ProfileState> {
+  public state: ProfileState = {
     username: "",
     firstname: "",
     lastname: "",
@@ -18,24 +32,29 @@ class Profile extends Component<StateProps, any> {
     password_confirm: ""
   };
 
-  componentDidMount() {
+  public componentDidMount() {
     const { username } = this.props;
+
     this.setState({
       username
     });
   }
 
-  handleEditProfileSubmit = (e: any) => {
+  private handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Updating user");
-  };
+  }
 
-  private handleFormChange = (e: any) => {
+  private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName = e.target.name as keyof ProfileState;
+
+    // @ts-ignore TS bug: https://github.com/Microsoft/TypeScript/issues/13948
     this.setState({
-      [e.target.name]: e.target.value
+      [fieldName]: e.target.value
     });
-  };
-  render() {
+  }
+
+  public render() {
     return (
       <div>
         <h1>My Profile</h1>
@@ -50,7 +69,7 @@ class Profile extends Component<StateProps, any> {
   }
 }
 
-const mapStateToProps = (state: any): StateProps => {
+const mapStateToProps = (state: RootState): StateProps => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     username: state.user.username

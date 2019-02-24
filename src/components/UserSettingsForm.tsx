@@ -1,15 +1,16 @@
 import React from "react";
 
 import { StyledLabel } from "../styles/Form";
+import { ProfileState } from "./Profile";
 
 interface UserSettingsProps {
-  handleFormSubmit: any;
-  handleFormChange: any;
-  values: any;
+  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  values: ProfileState;
   error: string | null;
 }
 
-const UserSettingsForm = (props: UserSettingsProps) => {
+const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
   return (
     <form onSubmit={handleFormSubmit}>
@@ -26,7 +27,7 @@ const UserSettingsForm = (props: UserSettingsProps) => {
           name="username"
           placeholder="username"
           required
-          value={values.username}
+          value={values.username || ""}
           onChange={handleFormChange}
         />
       </StyledLabel>

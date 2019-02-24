@@ -1,21 +1,27 @@
-import React, { Component, Props } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import * as actions from "../store/actions";
 import UserSettingsform from "../components/UserSettingsForm";
+import { RootState } from "../store/sagas/RootState";
+import { Dispatch, Action } from "redux";
+import { RegisterUserPayload } from "../store/actions/user";
 
-interface StateProps extends Props<any> {
-  isLoggedIn: false;
+interface StateProps {
+  isLoggedIn: boolean;
   error: string | null;
 }
 
-interface DispatchProps extends Props<any> {
-  onUserRegister: any;
+interface DispatchProps {
+  onUserRegister: (user: RegisterUserPayload) => void;
 }
 
-class Register extends Component<StateProps & DispatchProps, any> {
-  state = {
+interface RegisterProps extends StateProps, DispatchProps {}
+interface RegisterState extends RegisterUserPayload {}
+
+class Register extends Component<RegisterProps, RegisterState> {
+  public state = {
     username: "",
     firstname: "",
     lastname: "",
@@ -25,20 +31,23 @@ class Register extends Component<StateProps & DispatchProps, any> {
     password_confirm: ""
   };
 
-  private handleFormChange = (e: any) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName = e.target.name as keyof RegisterState;
 
-  private handleRegisterSubmit = (e: any) => {
+    // @ts-ignore TS bug: https://github.com/Microsoft/TypeScript/issues/13948
+    this.setState({
+      [fieldName]: e.target.value
+    });
+  }
+
+  private handleRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const { email, password } = this.state;
     const { onUserRegister } = this.props;
     onUserRegister(this.state);
-  };
+  }
 
-  render() {
+  public render() {
     const { error, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to="/" />;
@@ -57,16 +66,16 @@ class Register extends Component<StateProps & DispatchProps, any> {
   }
 }
 
-const mapStateToProps = (state: any): StateProps => {
+const mapStateToProps = (state: RootState): StateProps => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     error: state.user.error
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
-    onUserRegister: (payload: any) => dispatch(actions.registerUser(payload))
+    onUserRegister: (payload: RegisterUserPayload) => dispatch(actions.registerUser(payload))
   };
 };
 
