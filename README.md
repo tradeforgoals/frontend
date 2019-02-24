@@ -1,4 +1,4 @@
-# TradeForGoals - Frontend
+# TradeForGoals - Frontend ![Build](https://travis-ci.com/tradeforgoals/frontend.svg?branch=master)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

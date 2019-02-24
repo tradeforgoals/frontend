@@ -1,4 +1,4 @@
-import React, { Component, Props } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import UserSettingsform from "./UserSettingsForm";
@@ -42,7 +42,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   private handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Updating user");
+    console.log('Updating user');
   }
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
