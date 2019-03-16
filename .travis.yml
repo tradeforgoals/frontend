@@ -12,5 +12,7 @@ before_deploy:
   - docker ps -a
 
 deploy:
-  provider: azure_web_apps
-  verbose: true
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
