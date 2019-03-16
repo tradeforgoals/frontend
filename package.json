@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "tslint": "tslint -p ./"
+    "tslint": "tslint -p ./",
+    "run-server": "node ./server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
