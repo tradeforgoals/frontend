@@ -15,6 +15,7 @@ COPY . .
 
 RUN npm run build
 RUN npm run tslint
+RUN npm run test
 
 EXPOSE 3001
 CMD [ "npm", "run", "run-server" ]
