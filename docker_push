@@ -1,1 +1,2 @@
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin tradeforgoals.azurecr.io
+docker push tradeforgoals.azurecr.io/tradeforgoals/frontend

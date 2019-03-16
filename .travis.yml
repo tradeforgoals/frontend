@@ -7,9 +7,7 @@ services:
   - docker
 
 before_deploy: 
-  - docker build -t tradeforgoals/frontend .
-  - docker run -d -p 80:3001 tradeforgoals/frontend
-  - docker ps -a
+  - docker build -t tradeforgoals.azurecr.io/tradeforgoals/frontend .
 
 deploy:
   provider: script
