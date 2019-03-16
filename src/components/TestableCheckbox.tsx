@@ -21,6 +21,7 @@ export class TestableCheckbox extends React.Component<TestableCheckboxProps, Tes
         <input
           type="checkbox"
           checked={this.state.isChecked}
+          onChange={this.onChange}
         />
         {this.state.isChecked ? this.props.labelOn : this.props.labelOff}
       </label>
