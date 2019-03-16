@@ -1,17 +1,22 @@
 import React from 'react';
 
 import { StyledLabel } from '../styles/Form';
-import { ProfileState } from './Profile';
+import { User } from '../user/UserState';
 
 interface UserSettingsProps {
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  values: ProfileState;
+  values: Partial<User>;
   error: string | null;
 }
 
 const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
+
+  if (!values) {
+    return null;
+  }
+
   return (
     <form onSubmit={handleFormSubmit}>
       {error && (
@@ -19,6 +24,9 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           Error: <strong>{error}</strong>
         </p>
       )}
+
+      {values.photoURL && <img src={values.photoURL} alt={values.displayName || ''} style={{ maxWidth: 100 }} />}
+
       <StyledLabel htmlFor="username">
         Username:
         <input
@@ -39,7 +47,19 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           name="firstname"
           placeholder="firstname"
           required
-          value={values.firstname}
+          value={values.firstName}
+          onChange={handleFormChange}
+        />
+      </StyledLabel>
+      <StyledLabel htmlFor="middleName">
+        Middle name:
+        <input
+          type="text"
+          id="middleName"
+          name="middleName"
+          placeholder="middleName"
+          required
+          value={values.middleName}
           onChange={handleFormChange}
         />
       </StyledLabel>
@@ -51,7 +71,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           name="lastname"
           placeholder="lastname"
           required
-          value={values.lastname}
+          value={values.lastName}
           onChange={handleFormChange}
         />
       </StyledLabel>
@@ -70,37 +90,12 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
       <StyledLabel htmlFor="email">
         Email:
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
           placeholder="email"
-          required
-          value={values.email}
-          onChange={handleFormChange}
-        />
-      </StyledLabel>
-      <StyledLabel htmlFor="password">
-        Password:
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="password"
-          required
-          value={values.password}
-          onChange={handleFormChange}
-        />
-      </StyledLabel>
-      <StyledLabel htmlFor="password_confirm">
-        Repeat Password:
-        <input
-          type="password"
-          id="password_confirm"
-          name="password_confirm"
-          placeholder="Repeat Password"
-          required
-          value={values.password_confirm}
-          onChange={handleFormChange}
+          value={values.email || ''}
+          readOnly={true}
         />
       </StyledLabel>
       <button type="submit">Register</button>

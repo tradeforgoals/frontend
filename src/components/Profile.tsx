@@ -2,41 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import UserSettingsform from './UserSettingsForm';
-import { RootState } from '../store/sagas/RootState';
+import { User } from '../user/UserState';
+import { RootState } from '../store/RootState';
+import { withUser, WithUserProps } from '../user/withUser';
 
 interface StateProps {
   isLoggedIn: boolean;
-  username: string | null;
 }
 
-interface ProfileProps extends StateProps { }
+interface ProfileProps extends StateProps, WithUserProps { }
 
 export interface ProfileState {
-  username: string | null;
-  firstname: string;
-  lastname: string;
-  city: string;
-  email: string;
-  password: string;
-  password_confirm: string;
+  userDetails: Partial<User> | null;
 }
 
 class Profile extends Component<ProfileProps, ProfileState> {
   public state: ProfileState = {
-    username: '',
-    firstname: '',
-    lastname: '',
-    city: '',
-    email: '',
-    password: '',
-    password_confirm: ''
+    userDetails: this.props.user.userDetails
   };
 
   public componentDidMount() {
-    const { username } = this.props;
+    const { user: { userDetails } } = this.props;
 
     this.setState({
-      username
+      userDetails
     });
   }
 
@@ -46,7 +35,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
   }
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const fieldName = e.target.name as keyof ProfileState;
+    const fieldName = e.target.name as keyof Partial<User>;
 
     // @ts-ignore TS bug: https://github.com/Microsoft/TypeScript/issues/13948
     this.setState({
@@ -58,22 +47,17 @@ class Profile extends Component<ProfileProps, ProfileState> {
     return (
       <div>
         <h1>My Profile</h1>
-        <UserSettingsform
-          handleFormSubmit={this.handleEditProfileSubmit}
-          handleFormChange={this.handleFormChange}
-          values={this.state}
-          error="TODO"
-        />
+        {this.state.userDetails &&
+          <UserSettingsform
+            handleFormSubmit={this.handleEditProfileSubmit}
+            handleFormChange={this.handleFormChange}
+            values={this.state.userDetails}
+            error="TODO"
+          />
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: RootState): StateProps => {
-  return {
-    isLoggedIn: state.user.isLoggedIn,
-    username: state.user.username
-  };
-};
-
-export default connect(mapStateToProps)(Profile);
+export default withUser(Profile);

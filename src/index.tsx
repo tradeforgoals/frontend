@@ -2,35 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { FirebaseProvider } from './firebase/FirebaseContext';
+import { configureStore } from './store/store';
 
-import UserReducer from './store/reducers/user';
-import { watchUser } from './store/sagas';
-import { RootState } from './store/sagas/RootState';
-
-const rootReducer = combineReducers<RootState>({
-  user: UserReducer
-});
-
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
-
-sagaMiddleware.run(watchUser);
+import './index.css';
 
 const app = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+  <Provider store={configureStore()}>
+    <FirebaseProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </FirebaseProvider>
   </Provider>
 );
 

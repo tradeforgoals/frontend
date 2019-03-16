@@ -31,7 +31,8 @@
     "no-console": false,
     "interface-over-type-literal": false,
     "arrow-parens": false,
-    "no-any": true
+    "no-any": true,
+    "max-classes-per-file": false
   },
   "rulesDirectory": []
 }

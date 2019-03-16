@@ -19,6 +19,8 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "express": "^4.16.4",
+    "firebase": "^5.9.0",
+    "firebaseui": "^3.5.2",
     "nodemon": "^1.18.10",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

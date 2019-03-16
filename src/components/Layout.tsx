@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import RegisterLogin from '../user/RegisterLogin';
+import Logout from '../user/Logout';
 
 const Navigation = styled.div`
   display: flex;
@@ -19,8 +21,8 @@ const Layout: React.SFC<HomeProps> = (props) => {
   let navLinks = (
     <>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/register">Register</NavLink>
+      {/* <NavLink to="/login">Login</NavLink>
+      <NavLink to="/register">Register</NavLink> */}
     </>
   );
 
@@ -29,13 +31,17 @@ const Layout: React.SFC<HomeProps> = (props) => {
       <>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/profile">Profile</NavLink>
+        <Logout>Logout</Logout>
       </>
     );
   }
   return (
     <>
       <Navigation>{navLinks}</Navigation>
-      <div>{children}</div>
+      <div>
+        <RegisterLogin />
+        {children}
+      </div>
     </>
   );
 };

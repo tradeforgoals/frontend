@@ -7,9 +7,8 @@ import './App.css';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Login from './containers/Login';
-import Register from './containers/Register';
-import { RootState } from './store/sagas/RootState';
+import { RootState } from './store/RootState';
+// import Register from './containers/Register';
 
 interface StateProps {
   isLoggedIn: boolean;
@@ -23,10 +22,8 @@ class App extends Component<AppProps> {
 
     let routes = (
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
         <Route path="/" exact component={Home} />
-        <Redirect to="/" />
+        {/* <Redirect to="/" /> */}
       </Switch>
     );
     if (isLoggedIn) {
