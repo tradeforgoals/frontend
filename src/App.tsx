@@ -14,7 +14,7 @@ interface StateProps {
   isLoggedIn: boolean;
 }
 
-interface AppProps extends RouteComponentProps, StateProps { }
+interface AppProps extends RouteComponentProps, StateProps {}
 
 class App extends Component<AppProps> {
   public render(): JSX.Element {
@@ -23,7 +23,7 @@ class App extends Component<AppProps> {
     let routes = (
       <Switch>
         <Route path="/" exact component={Home} />
-        {/* <Redirect to="/" /> */}
+        <Route component={Home} />
       </Switch>
     );
     if (isLoggedIn) {

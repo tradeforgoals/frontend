@@ -1,17 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Grommet, Box } from 'grommet';
+import { Box, Grommet, Anchor } from 'grommet';
 import RegisterLogin from '../user/RegisterLogin';
 import Logout from '../user/Logout';
-
-const Navigation = styled.div`
-  display: flex;
-  flex: 1 0 auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 1em 0;
-`;
 
 const customTheme = {
   global: {
@@ -29,7 +21,9 @@ const Layout: React.SFC<HomeProps> = props => {
   const { children, isLoggedIn } = props;
   let navLinks = (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink to="/">
+        <Anchor as="span">Home</Anchor>
+      </NavLink>
       {/* <NavLink to="/login">Login</NavLink>
       <NavLink to="/register">Register</NavLink> */}
     </>
@@ -38,15 +32,29 @@ const Layout: React.SFC<HomeProps> = props => {
   if (isLoggedIn) {
     navLinks = (
       <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-        <Logout>Logout</Logout>
+        <NavLink to="/">
+          <Anchor as="span">Home</Anchor>
+        </NavLink>
+        <NavLink to="/profile">
+          <Anchor as="span">Profile</Anchor>
+        </NavLink>
+        <Logout>
+          <Anchor as="span">Logout</Anchor>
+        </Logout>
       </>
     );
   }
   return (
     <Grommet plain theme={customTheme}>
-      <Navigation>{navLinks}</Navigation>
+      <Box
+        background="light-2"
+        direction="row"
+        justify="around"
+        wrap
+        pad="small"
+      >
+        {navLinks}
+      </Box>
       <RegisterLogin />
       {children}
     </Grommet>
