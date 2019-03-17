@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Grommet, Box } from 'grommet';
 import RegisterLogin from '../user/RegisterLogin';
 import Logout from '../user/Logout';
 
@@ -12,11 +13,19 @@ const Navigation = styled.div`
   padding: 1em 0;
 `;
 
+const customTheme = {
+  global: {
+    colors: {
+      brand: 'lightskyblue'
+    }
+  }
+};
+
 interface HomeProps {
   isLoggedIn: boolean;
 }
 
-const Layout: React.SFC<HomeProps> = (props) => {
+const Layout: React.SFC<HomeProps> = props => {
   const { children, isLoggedIn } = props;
   let navLinks = (
     <>
@@ -36,13 +45,11 @@ const Layout: React.SFC<HomeProps> = (props) => {
     );
   }
   return (
-    <>
+    <Grommet plain theme={customTheme}>
       <Navigation>{navLinks}</Navigation>
-      <div>
-        <RegisterLogin />
-        {children}
-      </div>
-    </>
+      <RegisterLogin />
+      {children}
+    </Grommet>
   );
 };
 
