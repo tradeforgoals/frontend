@@ -15,11 +15,9 @@ const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
         <Image src={imgSrc} alt={title} fit="cover" />
         <Heading level="3">{title}</Heading>
         <Text>{shortDescription}</Text>
-        <Box border="top" pad="small">
-          <NavLink to={`/items/${id}`}>
-            <Button primary label="View Item" fill />
-          </NavLink>
-        </Box>
+        <NavLink to={`/items/${id}`}>
+          <Button primary label="View Item" fill />
+        </NavLink>
       </Box>
     </Stack>
   );
