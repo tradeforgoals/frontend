@@ -31,7 +31,7 @@ class App extends Component<AppProps> {
         <Switch>
           <Route path="/profile" component={Profile} />
           <Route path="/" exact component={Home} />
-          <Redirect to="/" />
+          <Route component={Home} />
         </Switch>
       );
     }

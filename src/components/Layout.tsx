@@ -10,6 +10,11 @@ const customTheme = {
     colors: {
       brand: 'lightskyblue'
     }
+  },
+  button: {
+    border: {
+      radius: 0
+    }
   }
 };
 
