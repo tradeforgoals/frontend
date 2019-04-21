@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
-import { Box } from 'grommet';
+import { Box, Text } from 'grommet';
+import axios from '../axios';
 
 export interface Item {
   id: number;
@@ -8,34 +9,45 @@ export interface Item {
   shortDescription: string;
   imgSrc: string;
 }
-
-const items: Item[] = [
-  {
-    id: 1,
-    title: 'Top Technology Item',
-    shortDescription: 'a very nice item',
-    imgSrc: 'http://lorempixel.com/300/300/technics'
-  },
-  {
-    id: 2,
-    title: 'Top Transportation Item',
-    shortDescription: 'somewhat better item',
-    imgSrc: 'http://lorempixel.com/300/300/transport'
-  },
-  {
-    id: 3,
-    title: 'top Fashion Item',
-    shortDescription: 'some other item',
-    imgSrc: 'http://lorempixel.com/300/300/fashion'
-  }
-];
+export interface ItemState {
+  items: [Item] | [];
+  error: string | null;
+  loading: boolean;
+}
 class Items extends Component {
+  public state: ItemState = {
+    items: [],
+    error: null,
+    loading: false
+  };
+
+  public componentDidMount = async () => {
+    this.setState({ loading: true });
+    try {
+      const result = await axios.get(`/items`);
+      this.setState({ error: null, loading: false, items: result.data });
+    } catch (e) {
+      console.error(e);
+      this.setState({
+        error: e.message,
+        loading: false
+      });
+    }
+  };
+
   public render() {
+    const { error, loading, items } = this.state;
+    if (loading) {
+      return (
+        <Box direction="row" wrap justify="center">
+          <Text>Loading...</Text>
+        </Box>
+      );
+    }
     return (
       <Box direction="row" wrap justify="center">
-        {items.map(item => (
-          <Card {...item} key={item.id} />
-        ))}
+        {error && <Text>{error}</Text>}
+        {items.length && items.map(item => <Card {...item} key={item.id} />)}
       </Box>
     );
   }
