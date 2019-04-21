@@ -7,6 +7,7 @@ import './App.css';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Item from './items/Item';
 import { RootState } from './store/RootState';
 // import Register from './containers/Register';
 
@@ -23,6 +24,7 @@ class App extends Component<AppProps> {
     let routes = (
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/items/:id" component={Item} />
         <Route component={Home} />
       </Switch>
     );
@@ -30,6 +32,7 @@ class App extends Component<AppProps> {
       routes = (
         <Switch>
           <Route path="/profile" component={Profile} />
+          <Route path="/items/:id" component={Item} />
           <Route path="/" exact component={Home} />
           <Route component={Home} />
         </Switch>
