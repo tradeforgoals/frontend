@@ -23,8 +23,12 @@ class WithItem extends Component<
   public componentDidMount = async () => {
     this.setState({ loading: true });
     const id = this.props.match.params.id;
-    const response = await axios.get(`/items/${id}`);
-    this.setState({ loading: false, error: null, item: response.data });
+    try {
+      const response = await axios.get(`/items/${id}`);
+      this.setState({ loading: false, error: null, item: response.data });
+    } catch (e) {
+      this.setState({ loading: false, error: e.message });
+    }
   }
 
   public render() {
