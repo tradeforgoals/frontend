@@ -1,6 +1,6 @@
 import React from 'react';
+import { Box, Button, Form, FormField, TextInput } from 'grommet';
 
-import { StyledLabel } from '../styles/Form';
 import { User } from '../user/UserState';
 
 interface UserSettingsProps {
@@ -10,7 +10,7 @@ interface UserSettingsProps {
   error: string | null;
 }
 
-const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
+const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
 
   if (!values) {
@@ -18,30 +18,34 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmit}>
       {error && (
         <p>
           Error: <strong>{error}</strong>
         </p>
       )}
 
-      {values.photoURL && <img src={values.photoURL} alt={values.displayName || ''} style={{ maxWidth: 100 }} />}
+      {values.photoURL && (
+        <img
+          src={values.photoURL}
+          alt={values.displayName || ''}
+          style={{ maxWidth: 100 }}
+        />
+      )}
 
-      <StyledLabel htmlFor="username">
-        Username:
-        <input
+      <FormField htmlFor="username" label="Username">
+        <TextInput
           type="text"
           id="username"
           name="username"
           placeholder="username"
-          required
-          value={values.username || ''}
+          disabled
+          value={values.displayName || ''}
           onChange={handleFormChange}
         />
-      </StyledLabel>
-      <StyledLabel htmlFor="firstname">
-        Firstname:
-        <input
+      </FormField>
+      <FormField htmlFor="firstname" label="Firstname">
+        <TextInput
           type="text"
           id="firstname"
           name="firstname"
@@ -50,22 +54,19 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           value={values.firstName}
           onChange={handleFormChange}
         />
-      </StyledLabel>
-      <StyledLabel htmlFor="middleName">
-        Middle name:
-        <input
+      </FormField>
+      <FormField htmlFor="middleName" label="Middel name">
+        <TextInput
           type="text"
           id="middleName"
           name="middleName"
           placeholder="middleName"
-          required
           value={values.middleName}
           onChange={handleFormChange}
         />
-      </StyledLabel>
-      <StyledLabel htmlFor="lastname">
-        Lastname:
-        <input
+      </FormField>
+      <FormField htmlFor="lastname" label="Lastname">
+        <TextInput
           type="text"
           id="lastname"
           name="lastname"
@@ -74,10 +75,9 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           value={values.lastName}
           onChange={handleFormChange}
         />
-      </StyledLabel>
-      <StyledLabel htmlFor="city">
-        City:
-        <input
+      </FormField>
+      <FormField htmlFor="city" label="City">
+        <TextInput
           type="text"
           id="city"
           name="city"
@@ -86,20 +86,19 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = (props) => {
           value={values.city}
           onChange={handleFormChange}
         />
-      </StyledLabel>
-      <StyledLabel htmlFor="email">
-        Email:
-        <input
+      </FormField>
+      <FormField htmlFor="email" label="Email">
+        <TextInput
           type="text"
           id="email"
           name="email"
           placeholder="email"
           value={values.email || ''}
-          readOnly={true}
+          readOnly
         />
-      </StyledLabel>
-      <button type="submit">Register</button>
-    </form>
+      </FormField>
+      <Button primary type="submit" label="Save" />
+    </Form>
   );
 };
 

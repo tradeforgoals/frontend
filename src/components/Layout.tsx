@@ -1,26 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Box, Grommet, Anchor } from 'grommet';
 import RegisterLogin from '../user/RegisterLogin';
 import Logout from '../user/Logout';
 
-const Navigation = styled.div`
-  display: flex;
-  flex: 1 0 auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 1em 0;
-`;
+const customTheme = {
+  global: {
+    colors: {
+      brand: 'lightskyblue'
+    }
+  },
+  button: {
+    border: {
+      radius: 0
+    }
+  }
+};
 
 interface HomeProps {
   isLoggedIn: boolean;
 }
 
-const Layout: React.SFC<HomeProps> = (props) => {
+const Layout: React.SFC<HomeProps> = props => {
   const { children, isLoggedIn } = props;
   let navLinks = (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink to="/">
+        <Anchor as="span">Home</Anchor>
+      </NavLink>
       {/* <NavLink to="/login">Login</NavLink>
       <NavLink to="/register">Register</NavLink> */}
     </>
@@ -29,20 +37,32 @@ const Layout: React.SFC<HomeProps> = (props) => {
   if (isLoggedIn) {
     navLinks = (
       <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-        <Logout>Logout</Logout>
+        <NavLink to="/">
+          <Anchor as="span">Home</Anchor>
+        </NavLink>
+        <NavLink to="/profile">
+          <Anchor as="span">Profile</Anchor>
+        </NavLink>
+        <Logout>
+          <Anchor as="span">Logout</Anchor>
+        </Logout>
       </>
     );
   }
   return (
-    <>
-      <Navigation>{navLinks}</Navigation>
-      <div>
-        <RegisterLogin />
-        {children}
-      </div>
-    </>
+    <Grommet plain theme={customTheme}>
+      <Box
+        background="light-2"
+        direction="row"
+        justify="around"
+        wrap
+        pad="small"
+      >
+        {navLinks}
+      </Box>
+      <RegisterLogin />
+      {children}
+    </Grommet>
   );
 };
 
