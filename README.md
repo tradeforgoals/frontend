@@ -1,4 +1,4 @@
-# TradeForGoals - Frontend ![Build](https://travis-ci.com/tradeforgoals/frontend.svg?branch=master)
+# TradeForGoals - Frontend ![Build](https://travis-ci.com/tradeforgoals/frontend.svg?branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tradeforgoals_frontend&metric=alert_status)](https://sonarcloud.io/dashboard?id=tradeforgoals_frontend)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
