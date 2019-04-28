@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Button, Heading, Image, Stack, Text } from 'grommet';
 import { Item } from './Items';
+import { StyledLabel } from '../styles/Form';
 
 const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
   return (
@@ -15,6 +16,9 @@ const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
         <Image src={imgSrc} alt={title} fit="cover" />
         <Heading level="3">{title}</Heading>
         <Text>{shortDescription}</Text>
+
+        <StyledLabel>Test</StyledLabel>
+
         <NavLink to={`/items/${id}`}>
           <Button primary label="View Item" fill />
         </NavLink>

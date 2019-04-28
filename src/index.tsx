@@ -6,6 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { FirebaseProvider } from './firebase/FirebaseContext';
 import { configureStore } from './store/store';
+import { Normalize } from 'styled-normalize';
 
 import './index.css';
 
@@ -13,7 +14,10 @@ const app = (
   <Provider store={configureStore()}>
     <FirebaseProvider>
       <BrowserRouter>
-        <App />
+        <>
+          <Normalize />
+          <App />
+        </>
       </BrowserRouter>
     </FirebaseProvider>
   </Provider>

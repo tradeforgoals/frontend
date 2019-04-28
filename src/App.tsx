@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
-import './App.css';
 
 import Layout from './components/Layout';
 import Home from './components/Home';
