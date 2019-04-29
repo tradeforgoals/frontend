@@ -54,7 +54,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run tslint-report && sh pre-commit.sh",
-      "post-commit": "sh post-commit.sh"
+      "post-commit": "sh post-commit.sh" 
     }
   },
   "eslintConfig": {
