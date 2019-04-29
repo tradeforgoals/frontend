@@ -6,6 +6,9 @@ node_js:
 services:
   - docker
 
+install:
+  - npm install
+
 before_deploy: 
   - docker build -t tradeforgoals.azurecr.io/tradeforgoals/frontend .
 
@@ -21,4 +24,4 @@ addons:
     token:
       secure: "$SONAR_TOKEN"
 script:
-  - sonar-scanner
+  - npm run tslint-report && sonar-scanner

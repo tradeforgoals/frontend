@@ -47,15 +47,9 @@
     "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tslint": "tslint -p ./",
-    "tslint-report": "tslint -t json -o report.json --project .",
+    "tslint-report": "tslint -t json -o tslint-report.json --project . --force",
     "run-server": "node ./server.js",
     "run-server-dev": "nodemon ./server.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run tslint-report && sh pre-commit.sh",
-      "post-commit": "sh post-commit.sh" 
-    }
   },
   "eslintConfig": {
     "extends": "react-app"
