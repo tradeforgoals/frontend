@@ -24,6 +24,7 @@
     "firebase": "^5.9.0",
     "firebaseui": "^3.5.2",
     "grommet": "^2.5.5",
+    "husky": "^2.1.0",
     "lodash": "^4.17.11",
     "nodemon": "^1.18.10",
     "polished": "^3.2.0",
@@ -46,8 +47,12 @@
     "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tslint": "tslint -p ./",
+    "tslint-report": "tslint -t json -o report.json --project .",
     "run-server": "node ./server.js",
     "run-server-dev": "nodemon ./server.js"
+  },
+  "husky": {
+    "pre-commit": "npm run tslint-report"
   },
   "eslintConfig": {
     "extends": "react-app"
