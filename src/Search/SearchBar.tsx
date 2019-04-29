@@ -6,7 +6,7 @@ export const SearchBar: React.FunctionComponent = () => {
   return (
     <SearchBarForm>
       <SearchBarInput type="text" placeholder="Search for..." />
-      <SearchBarButton type="submit"><FiSearch /></SearchBarButton>
+      <SearchBarButton as="button" type="submit"><FiSearch /></SearchBarButton>
     </SearchBarForm>
   );
 };

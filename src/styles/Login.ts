@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FiUser } from 'react-icons/fi';
 
 export const LoginTrigger = styled.div`
   margin-left: auto;
@@ -8,7 +7,7 @@ export const LoginTrigger = styled.div`
   cursor: pointer;
 `;
 
-export const LoginIcon = styled(FiUser)`
+export const LoginIcon = styled.div`
   margin-right: 10px;
   font-size: 30px;
 `;

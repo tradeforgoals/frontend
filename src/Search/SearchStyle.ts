@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors } from '../styles/variables/colors';
-import { Button } from '../styles/Button';
+import { Button } from '../ui/Button/Button';
 import { sizes } from '../styles/variables/sizes';
 
 export const SearchBarForm = styled.form`

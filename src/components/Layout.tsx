@@ -27,7 +27,7 @@ const Layout: React.SFC<HomeProps> = props => {
 
   return (
     <Grommet plain theme={customTheme}>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header />
 
       {children}
     </Grommet>
