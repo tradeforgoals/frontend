@@ -24,7 +24,6 @@
     "firebase": "^5.9.0",
     "firebaseui": "^3.5.2",
     "grommet": "^2.5.5",
-    "husky": "^2.1.0",
     "lodash": "^4.17.11",
     "nodemon": "^1.18.10",
     "polished": "^3.2.0",
