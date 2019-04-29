@@ -52,7 +52,9 @@
     "run-server-dev": "nodemon ./server.js"
   },
   "husky": {
-    "pre-commit": "npm run tslint-report"
+    "hooks": {
+      "pre-commit": "npm run tslint-report"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
