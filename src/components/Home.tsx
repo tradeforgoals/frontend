@@ -3,6 +3,7 @@ import { Box, Heading } from 'grommet';
 import { withUser, WithUserProps } from '../user/withUser';
 import Card from '../items/Card';
 import Items from '../items/Items';
+import Categories from '../Categories/Categories';
 
 type HomeProps = WithUserProps;
 
@@ -20,6 +21,10 @@ const Home: React.SFC<HomeProps> = props => {
           ? `Hi there ${userDetails.displayName}`
           : 'Not logged in'}
       </p>
+      <Heading level="2" alignSelf="center">
+        Categories:
+      </Heading>
+      <Categories />
       <Heading level="2" alignSelf="center">
         Our top items:
       </Heading>

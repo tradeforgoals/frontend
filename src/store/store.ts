@@ -5,9 +5,12 @@ import createSagaMiddleware from '@redux-saga/core';
 import { AllEffect, all, fork } from 'redux-saga/effects';
 import { userSagas } from '../user/UserSagas';
 import { userReducer } from '../user/UserReducer';
+import { categoriesReducer } from '../Categories/CategoriesReducer';
+import { categoriesSagas } from '../Categories/CategoriesSagas';
 
 const rootReducer = combineReducers<RootState>({
-  user: userReducer
+  user: userReducer,
+  categories: categoriesReducer
 });
 
 const sagaMiddleWare = createSagaMiddleware();
@@ -19,7 +22,8 @@ const middleware = [
 function* rootSaga(): IterableIterator<AllEffect<{}>> {
   yield all(
       [
-          fork(userSagas)
+          fork(userSagas),
+          fork(categoriesSagas)
       ]
   );
 }

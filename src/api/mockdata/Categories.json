@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Animals",
+    "url": "animals",
+    "order": 1
+  },
+  {
+    "name": "Cars",
+    "url": "cars",
+    "order": 2
+  },
+  {
+    "name": "Clothing",
+    "url": "clothing",
+    "order": 3
+  },
+  {
+    "name": "Games",
+    "url": "games",
+    "order": 4
+  },
+  {
+    "name": "Sport and Fitness",
+    "url": "sport-fitness",
+    "order": 5
+  }
+]

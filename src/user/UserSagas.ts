@@ -14,12 +14,12 @@ export function* getAdditionalUserDetails(action: GetUserDetailsAction) {
   }
 }
 
-function* watchLoadInvoices(): IterableIterator<ForkEffect> {
+function* watchLoadUsers(): IterableIterator<ForkEffect> {
   yield takeEvery(TypeKeys.GET_USER_DETAILS, getAdditionalUserDetails);
 }
 
 export function* userSagas() {
   yield all([
-    fork(watchLoadInvoices)
+    fork(watchLoadUsers)
   ]);
 }

@@ -50,6 +50,7 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
         justify="between"
         align="center"
         pad="medium"
+        background="#FFF"
       >
         <Logo href="/">TradeForGoals</Logo>
 
@@ -92,6 +93,7 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
           horizontal: 'medium',
           bottom: 'medium'
         }}
+        background="#FFF"
       >
         {!isAboveMedium &&
           <SearchBar />

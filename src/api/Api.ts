@@ -1,19 +1,26 @@
 import { AdditionalUserData } from '../user/UserState';
+import { Category } from '../Categories/CategoriesState';
+
+// Mock data
+import additionalUserDataMock from './mockdata/AdditionalUserData.json';
+import categoriesMock from './mockdata/Categories.json';
 
 export class Api {
   private readonly baseUrl = '/';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
     return new Promise((resolve, reject) => {
-      resolve({
-        firstName: 'Jorik',
-        lastName: 'Barten',
-        zipcode: '1111AA',
-        houseNumber: '3',
-        city: 'Amsterdam'
-      });
+      resolve(additionalUserDataMock);
     });
     // return await this.getData(`/api/user/${userId}`);
+  }
+
+  public async getCategories(): Promise<Category[]> {
+    return new Promise((resolve, reject) => {
+      resolve(categoriesMock);
+    });
+
+    // return await this.getData(`/api/categories`);
   }
 
   private async getData(url: string) {
