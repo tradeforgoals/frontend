@@ -4,7 +4,7 @@ import { UserState, AdditionalUserData } from './UserState';
 export enum TypeKeys {
   GET_USER_DETAILS = 'GET_USER_DETAILS',
   SET_USER_DETAILS = 'SET_USER_DETAILS',
-  CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS'
+  CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS',
 }
 
 export interface GetUserDetailsAction extends Action {
@@ -22,10 +22,18 @@ export interface SetUserDetailsAction extends Action {
 }
 
 export type UserActionTypes =
-  SetUserDetailsAction |
-  ClearUserDetailsAction |
-  GetUserDetailsAction;
+  | SetUserDetailsAction
+  | ClearUserDetailsAction
+  | GetUserDetailsAction;
 
-export const setUserDetailsAction = (payload: any) => ({ type: TypeKeys.SET_USER_DETAILS, payload });
-export const clearUserDetailsAction = () => ({ type: TypeKeys.CLEAR_USER_DETAILS });
-export const getUserDetailsAction = (userId: string) => ({ type: TypeKeys.GET_USER_DETAILS, userId });
+export const setUserDetailsAction = (payload: any) => ({
+  type: TypeKeys.SET_USER_DETAILS,
+  payload,
+});
+export const clearUserDetailsAction = () => ({
+  type: TypeKeys.CLEAR_USER_DETAILS,
+});
+export const getUserDetailsAction = (userId: string) => ({
+  type: TypeKeys.GET_USER_DETAILS,
+  userId,
+});
