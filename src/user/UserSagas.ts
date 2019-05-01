@@ -1,12 +1,13 @@
 import { all, fork, put, ForkEffect, takeEvery } from 'redux-saga/effects';
 import { GetUserDetailsAction, TypeKeys, setUserDetailsAction } from './UserActions';
 import { Api } from '../api/Api';
+import { AdditionalUserData } from './UserState';
 
 export function* getAdditionalUserDetails(action: GetUserDetailsAction) {
   const api = new Api();
 
   try {
-    const data: any = yield api.getAdditionalUserDetails(action.userId);
+    const data: AdditionalUserData = yield api.getAdditionalUserDetails(action.userId);
 
     yield put(setUserDetailsAction(data));
   } catch (e) {

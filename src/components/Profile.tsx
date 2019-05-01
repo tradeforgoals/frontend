@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import UserSettingsform from './UserSettingsForm';
 import { User } from '../user/UserState';
-import { RootState } from '../store/RootState';
 import { withUser, WithUserProps } from '../user/withUser';
 import { Box, Heading } from 'grommet';
 
@@ -35,7 +33,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
   private handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Updating user');
-  };
+  }
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fieldName = e.target.name as keyof Partial<User>;
@@ -44,7 +42,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
     this.setState({
       [fieldName]: e.target.value
     });
-  };
+  }
 
   public render() {
     return (

@@ -4,6 +4,7 @@ import { Dispatch, Action } from 'redux';
 import { RootState } from '../store/RootState';
 import { CategoriesState, Category } from './CategoriesState';
 import { setCategoriesAction, getCategoriesAction } from './CategoriesActions';
+import { Omit } from '../types/omit';
 
 interface StateProps {
   categories: CategoriesState;
@@ -16,9 +17,10 @@ interface DispatchProps {
 
 export interface WithCategoriesProps extends StateProps, DispatchProps { }
 
-export function withCategories(Component: any): any {
+export function withCategories<T extends WithCategoriesProps>(Component: React.ComponentType<T>):
+  React.ComponentType<Omit<T, keyof WithCategoriesProps>> {
 
-  type WrappedComponentProps = WithCategoriesProps;
+  type WrappedComponentProps = WithCategoriesProps & T;
   class WrapperComponent extends React.Component<WrappedComponentProps> {
     public componentDidMount(): void {
       if (this.props.categories.data.length === 0 && !this.props.categories.loading) {
@@ -46,5 +48,6 @@ export function withCategories(Component: any): any {
     };
   };
 
+  // @ts-ignore non-understandable TS issue
   return connect(mapStateToProps, mapDispatchToProps)(WrapperComponent);
 }

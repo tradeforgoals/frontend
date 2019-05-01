@@ -16,11 +16,10 @@ export const Sidebar = styled.aside`
   margin-bottom: 20px;
 
   @media (min-width: ${sizes.M}) {
-    flex-shrink: 0; 
+    flex-shrink: 0;
     width: 200px;
   }
 `;
 
 export const Main = styled.main`
-  
 `;

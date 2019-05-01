@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../../styles/variables/colors';
 import { sizes } from '../../styles/variables/sizes';
 import { zIndex } from '../../styles/variables/zIndex';
 import { rgba } from 'polished';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from 'grommet';
 import { withUser, WithUserProps } from '../user/withUser';
 import Items from '../items/Items';
 import Categories from '../Categories/Categories';

@@ -57,7 +57,7 @@ export class Modal extends React.Component<ModalAllProps> {
             </ModalHeader>
             <ModalBody>
               {this.props.children}
-            </ModalBody>            
+            </ModalBody>
           </ModalContainer>
         </OutsideClickHandler>
       </StyledModal>

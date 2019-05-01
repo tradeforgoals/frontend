@@ -1,6 +1,4 @@
-import styled, { css } from 'styled-components';
-import { colors } from '../styles/variables/colors';
-import { sizes } from '../styles/variables/sizes';
+import styled from 'styled-components';
 
 export const Categories = styled.div`
   display: flex;

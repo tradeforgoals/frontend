@@ -6,7 +6,7 @@ import additionalUserDataMock from './mockdata/AdditionalUserData.json';
 import categoriesMock from './mockdata/Categories.json';
 
 export class Api {
-  private readonly baseUrl = '/';
+  // private readonly baseUrl = '/';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
     return new Promise((resolve, reject) => {
@@ -23,14 +23,14 @@ export class Api {
     // return await this.getData(`/api/categories`);
   }
 
-  private async getData(url: string) {
-    try {
-      const response = await fetch(`${this.baseUrl}${url}`);
-      if (response.ok) {
-        return response.json();
-      }
-    } catch (e) {
-      throw console.log(`API call '${url}' fails with code: ${e.statusCode}. Exception: ${e.toString()}`);
-    }
-  }
+  // private async getData(url: string) {
+  //   try {
+  //     const response = await fetch(`${this.baseUrl}${url}`);
+  //     if (response.ok) {
+  //       return response.json();
+  //     }
+  //   } catch (e) {
+  //     throw console.log(`API call '${url}' fails with code: ${e.statusCode}. Exception: ${e.toString()}`);
+  //   }
+  // }
 }

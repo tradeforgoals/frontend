@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { UserState, AdditionalUserData } from './UserState';
+import { AdditionalUserData } from './UserState';
 
 export enum TypeKeys {
   GET_USER_DETAILS = 'GET_USER_DETAILS',
@@ -26,6 +26,6 @@ export type UserActionTypes =
   ClearUserDetailsAction |
   GetUserDetailsAction;
 
-export const setUserDetailsAction = (payload: any) => ({ type: TypeKeys.SET_USER_DETAILS, payload });
+export const setUserDetailsAction = (payload: AdditionalUserData) => ({ type: TypeKeys.SET_USER_DETAILS, payload });
 export const clearUserDetailsAction = () => ({ type: TypeKeys.CLEAR_USER_DETAILS });
 export const getUserDetailsAction = (userId: string) => ({ type: TypeKeys.GET_USER_DETAILS, userId });

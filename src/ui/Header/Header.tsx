@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Layer, Anchor } from 'grommet';
+import { Box } from 'grommet';
 import RegisterLogin from '../../user/RegisterLogin';
 import Logout from '../../user/Logout';
 import { Logo } from '../../styles/Logo';

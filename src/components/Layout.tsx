@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grommet, Anchor } from 'grommet';
+import { Grommet } from 'grommet';
 import Header from '../ui/Header/Header';
 
 const customTheme = {
@@ -23,7 +23,7 @@ interface HomeProps {
 }
 
 const Layout: React.SFC<HomeProps> = props => {
-  const { children, isLoggedIn } = props;
+  const { children } = props;
 
   return (
     <Grommet plain theme={customTheme}>

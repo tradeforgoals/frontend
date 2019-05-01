@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { colors } from '../styles/variables/colors';
 import { Button } from '../ui/Button/Button';
 import { sizes } from '../styles/variables/sizes';

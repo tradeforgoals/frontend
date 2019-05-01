@@ -1,4 +1,3 @@
-import { Action } from 'redux';
 import { UserState } from './UserState';
 import { UserActionTypes, TypeKeys } from './UserActions';
 

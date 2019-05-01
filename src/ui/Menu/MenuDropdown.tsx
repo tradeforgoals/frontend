@@ -2,7 +2,13 @@ import React from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { withUser, WithUserProps } from '../../user/withUser';
 import { FiChevronDown } from 'react-icons/fi';
-import { StyledMenuDropdown, MenuDropdownTrigger, MenuDropdownChevron, MenuDropdownBody, MenuDropdownProfile } from './MenuDropdownStyle';
+import {
+  StyledMenuDropdown,
+  MenuDropdownTrigger,
+  MenuDropdownChevron,
+  MenuDropdownBody,
+  MenuDropdownProfile
+} from './MenuDropdownStyle';
 
 type MenuDropdownProps = {
   title: JSX.Element;

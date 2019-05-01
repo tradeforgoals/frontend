@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Box } from 'grommet';
 
 export const Menu = styled.div`
   width: 100%;

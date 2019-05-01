@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Form, FormField, TextInput } from 'grommet';
+import { Button, Form, FormField, TextInput } from 'grommet';
 
 import { User } from '../user/UserState';
 
