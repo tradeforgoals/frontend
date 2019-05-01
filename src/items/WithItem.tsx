@@ -28,12 +28,6 @@ class WithItem extends Component<
   } & StateProps &
     DispatchProps
 > {
-  public state: ItemProps = {
-    error: null,
-    loading: false,
-    item: undefined,
-  };
-
   public componentDidMount = async () => {
     const id = +this.props.match.params.id;
     const { getNewItem, items } = this.props;

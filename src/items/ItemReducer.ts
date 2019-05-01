@@ -1,5 +1,5 @@
 import { Item } from './Items';
-import { TypeKeys, UserActionTypes, SetItemAction } from './ItemActions';
+import { TypeKeys, ItemActionTypes, SetItemAction } from './ItemActions';
 
 export interface ItemState {
   readonly loading: boolean;
@@ -26,7 +26,7 @@ const setItem = (state: ItemState, action: SetItemAction): ItemState => {
 
 export function itemReducer(
   state: ItemState = initialState,
-  action: UserActionTypes
+  action: ItemActionTypes
 ): ItemState {
   switch (action.type) {
     case TypeKeys.GET_ITEM_DETAILS:

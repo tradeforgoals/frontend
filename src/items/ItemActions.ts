@@ -7,7 +7,7 @@ export enum TypeKeys {
   GET_ITEM_FAILED = 'GET_ITEM_FAILED',
 }
 
-export type UserActionTypes = GetItemAction | GetItemFailed | SetItemAction;
+export type ItemActionTypes = GetItemAction | GetItemFailed | SetItemAction;
 
 export interface GetItemAction extends Action {
   type: TypeKeys.GET_ITEM_DETAILS;
