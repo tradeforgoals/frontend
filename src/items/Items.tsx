@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
-import { Box } from 'grommet';
+import { Box, Heading } from 'grommet';
 
 export interface Item {
   id: number;
@@ -32,11 +32,16 @@ const items: Item[] = [
 class Items extends Component {
   public render() {
     return (
-      <Box direction="row" wrap justify="center">
-        {items.map(item => (
-          <Card {...item} key={item.id} />
-        ))}
-      </Box>
+      <>
+        <Heading level="2" alignSelf="center" margin="medium">
+          Our top items:
+        </Heading>
+        <Box direction="row" wrap justify="center">
+          {items.map(item => (
+            <Card {...item} key={item.id} />
+          ))}
+        </Box>
+      </>
     );
   }
 }

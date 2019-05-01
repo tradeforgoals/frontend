@@ -15,6 +15,7 @@ import { Button, ButtonIcon } from '../Button/Button';
 import { FiPlus, FiUser } from 'react-icons/fi';
 import MenuDropdown from '../Menu/MenuDropdown';
 import { MenuDropdownTriggerIcon, MenuDropdownItem } from '../Menu/MenuDropdownStyle';
+import { StyledHeader } from './HeaderStyle';
 
 type SizesProps = {
   isAboveMedium: boolean;
@@ -29,76 +30,82 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
   return (
     <>
       {user.isLoggedIn &&
-        <Menu
-          direction="row"
-          align="center"
-          pad={{
-            horizontal: 'medium'
-          }}
-        >
-          <MenuDropdown title={<><MenuDropdownTriggerIcon><FiUser /></MenuDropdownTriggerIcon> Account</>}>
-            {/*
+        <Menu>
+          <Box
+            direction="row"
+            align="center"
+            justify="end"
+            fill={true}
+            pad={{
+              horizontal: 'medium'
+            }}
+          >
+            <MenuDropdown title={<><MenuDropdownTriggerIcon><FiUser /></MenuDropdownTriggerIcon> Account</>}>
+              {/*
             // @ts-ignore:styled-component TS issue */}
-            <MenuDropdownItem as={NavLink} to="/profile">My profile</MenuDropdownItem>
-            <MenuDropdownItem><Logout>Logout</Logout></MenuDropdownItem>
-          </MenuDropdown>
+              <MenuDropdownItem as={NavLink} to="/profile">My profile</MenuDropdownItem>
+              <MenuDropdownItem><Logout>Logout</Logout></MenuDropdownItem>
+            </MenuDropdown>
+          </Box>
         </Menu>
       }
 
-      <Box
-        direction="row"
-        justify="between"
-        align="center"
-        pad="medium"
-        background="#FFF"
-      >
-        <Logo href="/">TradeForGoals</Logo>
-
-        {isAboveMedium &&
-          <SearchBar />
-        }
-
-        {user.isLoggedIn &&
-          <Button href="/" primary rounded>
-            <ButtonIcon>
-              <FiPlus />
-            </ButtonIcon>
-            Add trade
-          </Button>
-        }
-
-        {!user.isLoggedIn &&
-          <LoginTrigger onClick={() => setShow(true)}>
-            <LoginIcon>
-              <FiUser />
-            </LoginIcon>
-            <LoginText>
-              Login / <br />Register
-            </LoginText>
-          </LoginTrigger>
-        }
-
-        <Modal
-          open={show}
-          onClose={() => setShow(false)}
+      <StyledHeader>
+        <Box
+          direction="row"
+          justify="between"
+          align="center"
+          pad="medium"
+          fill={true}
         >
-          <RegisterLogin />
-        </Modal>
-      </Box>
+          <Logo href="/">TradeForGoals</Logo>
 
-      <Box
-        direction="row"
-        justify="around"
-        pad={{
-          horizontal: 'medium',
-          bottom: 'medium'
-        }}
-        background="#FFF"
-      >
-        {!isAboveMedium &&
+          {isAboveMedium &&
+            <SearchBar />
+          }
+
+          {user.isLoggedIn &&
+            <Button href="/" primary rounded>
+              <ButtonIcon>
+                <FiPlus />
+              </ButtonIcon>
+              Add trade
+          </Button>
+          }
+
+          {!user.isLoggedIn &&
+            <LoginTrigger onClick={() => setShow(true)}>
+              <LoginIcon>
+                <FiUser />
+              </LoginIcon>
+              <LoginText>
+                Login / <br />Register
+            </LoginText>
+            </LoginTrigger>
+          }
+
+          <Modal
+            open={show}
+            onClose={() => setShow(false)}
+          >
+            <RegisterLogin />
+          </Modal>
+        </Box>
+      </StyledHeader>
+
+      {!isAboveMedium &&
+        <Box
+          direction="row"
+          justify="around"
+          pad={{
+            horizontal: 'medium',
+            bottom: 'medium'
+          }}
+          background="#FFF"
+        >
           <SearchBar />
-        }
-      </Box>
+        </Box>
+      }
     </>
   );
 };

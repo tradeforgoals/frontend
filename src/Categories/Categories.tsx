@@ -11,18 +11,19 @@ const Categories: React.FunctionComponent<CategoriesAllProps> = (props) => {
   console.log(props);
 
   return (
-    <Box
-      direction="column"
-      pad="medium"
-      background="#FFF"
-    >
-      {categories.data && categories.data.length > 0 &&
-        <>
-          {categories.data.sort((a, b) => a.order - b.order).map((category, index) => (
-            <CategoriesItem href={category.url} key={index}>{category.name}</CategoriesItem>
-          ))}
-      </>}
-    </Box>
+    <StyledCategories>
+      <Box
+          direction="column"
+          pad="medium"
+      >
+        {categories.data && categories.data.length > 0 &&
+          <>
+            {categories.data.sort((a, b) => a.order - b.order).map((category, index) => (
+              <CategoriesItem href={category.url} key={index}>{category.name}</CategoriesItem>
+            ))}
+        </>}
+      </Box>
+    </StyledCategories>
   );
 };
 

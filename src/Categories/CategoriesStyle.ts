@@ -9,5 +9,5 @@ export const Categories = styled.div`
 `;
 
 export const CategoriesItem = styled.a`
-  padding: 5px 10px;
+  padding: 5px 0;
 `;
