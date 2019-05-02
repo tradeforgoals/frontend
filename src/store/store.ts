@@ -7,10 +7,13 @@ import { userSagas } from '../user/UserSagas';
 import { itemSagas } from '../items/ItemSagas';
 import { userReducer } from '../user/UserReducer';
 import { itemReducer } from '../items/ItemReducer';
+import { categoriesReducer } from '../Categories/CategoriesReducer';
+import { categoriesSagas } from '../Categories/CategoriesSagas';
 
 const rootReducer = combineReducers<RootState>({
   user: userReducer,
   items: itemReducer,
+  categories: categoriesReducer,
 });
 
 const sagaMiddleWare = createSagaMiddleware();
@@ -18,7 +21,7 @@ const sagaMiddleWare = createSagaMiddleware();
 const middleware = [sagaMiddleWare];
 
 function* rootSaga(): IterableIterator<AllEffect<{}>> {
-  yield all([fork(userSagas), fork(itemSagas)]);
+  yield all([fork(userSagas), fork(itemSagas), fork(categoriesSagas)]);
 }
 
 export function configureStore(): Store<RootState> {

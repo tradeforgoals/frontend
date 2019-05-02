@@ -1,9 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { Box, Grommet, Anchor } from 'grommet';
-import RegisterLogin from '../user/RegisterLogin';
-import Logout from '../user/Logout';
+import { Grommet } from 'grommet';
+import Header from '../ui/Header/Header';
 
 const customTheme = {
   global: {
@@ -15,6 +12,9 @@ const customTheme = {
     border: {
       radius: 0
     }
+  },
+  box: {
+    extend: `max-width: 1240px; margin-left: auto; margin-right: auto;`
   }
 };
 
@@ -23,44 +23,12 @@ interface HomeProps {
 }
 
 const Layout: React.SFC<HomeProps> = props => {
-  const { children, isLoggedIn } = props;
-  let navLinks = (
-    <>
-      <NavLink to="/">
-        <Anchor as="span">Home</Anchor>
-      </NavLink>
-      {/* <NavLink to="/login">Login</NavLink>
-      <NavLink to="/register">Register</NavLink> */}
-    </>
-  );
+  const { children } = props;
 
-  if (isLoggedIn) {
-    navLinks = (
-      <>
-        <NavLink to="/">
-          <Anchor as="span">Home</Anchor>
-        </NavLink>
-        <NavLink to="/profile">
-          <Anchor as="span">Profile</Anchor>
-        </NavLink>
-        <Logout>
-          <Anchor as="span">Logout</Anchor>
-        </Logout>
-      </>
-    );
-  }
   return (
     <Grommet plain theme={customTheme}>
-      <Box
-        background="light-2"
-        direction="row"
-        justify="around"
-        wrap
-        pad="small"
-      >
-        {navLinks}
-      </Box>
-      <RegisterLogin />
+      <Header />
+
       {children}
     </Grommet>
   );

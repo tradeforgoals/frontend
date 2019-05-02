@@ -18,7 +18,7 @@ class Items extends Component {
   public state: ItemState = {
     items: [],
     error: null,
-    loading: false
+    loading: false,
   };
 
   public componentDidMount = async () => {
@@ -30,10 +30,10 @@ class Items extends Component {
       console.error(e);
       this.setState({
         error: e.message,
-        loading: false
+        loading: false,
       });
     }
-  };
+  }
 
   public render() {
     const { error, loading, items } = this.state;

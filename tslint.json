@@ -27,7 +27,6 @@
         "jsx-double"
       ]
     },
-    "linebreak-style": [true, "LF"],
     "no-console": false,
     "interface-over-type-literal": false,
     "arrow-parens": false,

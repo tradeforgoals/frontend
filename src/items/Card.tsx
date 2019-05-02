@@ -8,13 +8,13 @@ const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
     <Stack anchor="top" margin="medium">
       <Box
         background="light-2"
-        width="medium"
         elevation="medium"
         round="xsmall"
       >
         <Image src={imgSrc} alt={title} fit="cover" />
         <Heading level="3">{title}</Heading>
         <Text>{shortDescription}</Text>
+
         <NavLink to={`/items/${id}`}>
           <Button primary label="View Item" fill />
         </NavLink>

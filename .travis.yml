@@ -1,10 +1,13 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - "11.14.0"
 
 services:
   - docker
+
+install:
+  - npm install
 
 before_deploy: 
   - docker build -t tradeforgoals.azurecr.io/tradeforgoals/frontend .
@@ -14,3 +17,11 @@ deploy:
   script: bash docker_push
   on:
     branch: master
+
+addons:
+  sonarcloud:
+    organization: "tradeforgoals"
+    token:
+      secure: "$SONAR_TOKEN"
+script:
+  - npm run tslint-report && sonar-scanner

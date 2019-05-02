@@ -4,6 +4,7 @@ import { Dispatch, Action } from 'redux';
 import { setUserDetailsAction, getUserDetailsAction, clearUserDetailsAction } from './UserActions';
 import { RootState } from '../store/RootState';
 import { User, UserState } from './UserState';
+import { Omit } from '../types/omit';
 
 interface WithUserCustomProps {
   getAdditionalUserData(userId: string): void;
@@ -21,9 +22,10 @@ interface DispatchProps {
 
 export interface WithUserProps extends WithUserCustomProps, StateProps, DispatchProps { }
 
-export function withUser(Component: any): any {
+export function withUser<T extends WithUserProps>(Component: React.ComponentType<T>):
+React.ComponentType<Omit<T, keyof WithUserProps>>  {
 
-  type WrappedComponentProps = WithUserProps;
+  type WrappedComponentProps = WithUserProps & T;
   class WrapperComponent extends React.Component<WrappedComponentProps> {
     public render() {
       return (
@@ -50,5 +52,6 @@ export function withUser(Component: any): any {
     };
   };
 
+  // @ts-ignore non-understandable TS issue
   return connect(mapStateToProps, mapDispatchToProps)(WrapperComponent);
 }
