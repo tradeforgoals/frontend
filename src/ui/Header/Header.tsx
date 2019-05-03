@@ -58,7 +58,7 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
           pad="medium"
           fill={true}
         >
-          <Logo href="/">TradeForGoals</Logo>
+          <Logo to="/">TradeForGoals</Logo>
 
           {isAboveMedium &&
             <SearchBar />
