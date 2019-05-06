@@ -10,7 +10,7 @@ export interface Item {
   imgSrc: string;
 }
 export interface ItemState {
-  items: [Item] | [];
+  items: Item[];
   error: string | null;
   loading: boolean;
 }
@@ -47,7 +47,9 @@ class Items extends Component {
     return (
       <Box direction="row" wrap justify="center">
         {error && <Text>{error}</Text>}
-        {items.length && items.map(item => <Card {...item} key={item.id} />)}
+        {items.map(item => (
+          <Card {...item} key={item.id} />
+        ))}
       </Box>
     );
   }
