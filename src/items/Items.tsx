@@ -25,6 +25,10 @@ class Items extends Component {
     this.setState({ loading: true });
     try {
       const result = await axios.get(`/items`);
+      if (typeof result.data !== 'object') {
+        // NOTE: This happens on Azure where /items returns the index page.
+        throw new Error('invalid data, is the API returning json?');
+      }
       this.setState({ error: null, loading: false, items: result.data });
     } catch (e) {
       console.error(e);
