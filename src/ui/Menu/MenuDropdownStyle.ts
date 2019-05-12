@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro';
+import { zIndex } from '../../styles/variables/zIndex';
 
 export const StyledMenuDropdown = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ export const MenuDropdownBody = styled.div`
   font-size: 13px;
   background-color: #FFF;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+  z-index: ${zIndex.dropdownMenu};
 `;
 
 type MenuDropdownChevronProps = {

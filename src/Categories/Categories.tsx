@@ -8,13 +8,12 @@ type CategoriesAllProps = WithCategoriesProps;
 const Categories: React.FunctionComponent<CategoriesAllProps> = (props) => {
   const { categories } = props;
 
-  console.log(props);
-
   return (
     <StyledCategories>
       <Box
           direction="column"
           pad="medium"
+          width="100%"
       >
         {categories.data && categories.data.length > 0 &&
           <>

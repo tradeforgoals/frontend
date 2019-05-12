@@ -30,6 +30,7 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-icons": "^3.6.1",
+    "react-masonry-component": "^6.2.1",
     "react-outside-click-handler": "^1.2.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

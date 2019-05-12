@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import Card from './Card';
 import { Box, Text } from 'grommet';
 import axios from '../axios';
+import Masonry from 'react-masonry-component';
+import { Advertisement } from '../Advertisements/Advertisement';
+import { MasonryItem } from '../ui/Grid/GridStyle';
 
 export interface Item {
   id: number;
   title: string;
   shortDescription: string;
   imgSrc: string;
+  category: string;
 }
 export interface ItemState {
   items: Item[];
@@ -49,12 +52,16 @@ class Items extends Component {
       );
     }
     return (
-      <Box direction="row" wrap justify="center">
+      <div>
         {error && <Text>{error}</Text>}
-        {items.map(item => (
-          <Card {...item} key={item.id} />
-        ))}
-      </Box>
+        <Masonry>
+          {items.map(item => (
+            <MasonryItem key={item.id}>
+              <Advertisement {...item} />
+            </MasonryItem>
+          ))}
+        </Masonry>
+      </div>
     );
   }
 }

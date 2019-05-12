@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Button, Heading, Image, Stack, Text } from 'grommet';
 import { Item } from './Items';
+import { CdnImage } from '../ui/Image/CdnImage';
 
 const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
   return (
@@ -11,7 +12,7 @@ const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
         elevation="medium"
         round="xsmall"
       >
-        <Image src={imgSrc} alt={title} fit="cover" />
+        <CdnImage src={imgSrc} alt={title} />
         <Heading level="3">{title}</Heading>
         <Text>{shortDescription}</Text>
 
