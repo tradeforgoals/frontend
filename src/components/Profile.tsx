@@ -4,12 +4,13 @@ import UserSettingsform from './UserSettingsForm';
 import { User } from '../user/UserState';
 import { withUser, WithUserProps } from '../user/withUser';
 import { Box, Heading } from 'grommet';
+import { Main, Layout, Sidebar } from '../styles/Layout';
 
 interface StateProps {
   isLoggedIn: boolean;
 }
 
-interface ProfileProps extends StateProps, WithUserProps {}
+interface ProfileProps extends StateProps, WithUserProps { }
 
 export interface ProfileState {
   userDetails: Partial<User> | null;
@@ -46,9 +47,16 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   public render() {
     return (
-      <Box direction="column" align="center">
-        <Heading level="1">My Profile</Heading>
-        <Box width="medium">
+      <Layout>
+        <Sidebar>
+          <ul>
+            <li>Profile</li>
+            <li>Address</li>
+            <li>Trade history</li>
+          </ul>
+        </Sidebar>
+        <Main padding>
+          <Heading level="1">My Profile</Heading>
           {this.state.userDetails && (
             <UserSettingsform
               handleFormSubmit={this.handleEditProfileSubmit}
@@ -57,8 +65,8 @@ class Profile extends Component<ProfileProps, ProfileState> {
               error={null}
             />
           )}
-        </Box>
-      </Box>
+        </Main>
+      </Layout>
     );
   }
 }

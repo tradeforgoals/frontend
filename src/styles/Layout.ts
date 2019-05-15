@@ -1,5 +1,9 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { sizes } from './variables/sizes';
+
+interface MainProps {
+  padding?: boolean;
+}
 
 export const Layout = styled.div`
   display: flex;
@@ -23,9 +27,17 @@ export const Sidebar = styled.aside`
   }
 `;
 
-export const Main = styled.main`
+export const Main = styled.main<MainProps>`
   flex-grow: 1;
   background-color: #FFF;
+
+  ${props => props.padding && css`
+    padding: 12px;
+
+    @media (min-width: ${sizes.M}) {
+      padding: 24px;
+    }
+  `}
 `;
 
 export const MainContent = styled.div`
