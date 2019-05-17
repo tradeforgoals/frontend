@@ -5,7 +5,7 @@ import { Advertisement as StyledAdvertisement, AdvertisementOverlay } from './Ad
 import { Link } from 'react-router-dom';
 
 export const Advertisement: React.FC<Item> = (props) => {
-  const { id, title, shortDescription, imgSrc } = props;
+  const { id, title, imgSrc } = props;
 
   return (
     <StyledAdvertisement>

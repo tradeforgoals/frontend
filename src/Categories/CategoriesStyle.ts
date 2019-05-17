@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { sizes } from '../styles/variables/sizes';
 
 export const Categories = styled.div`
   height: 100%;

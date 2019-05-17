@@ -1,8 +1,6 @@
 import React from 'react';
 
-type CdnImageProps = React.InputHTMLAttributes<HTMLImageElement> & {
-
-};
+type CdnImageProps = React.InputHTMLAttributes<HTMLImageElement>;
 
 export const CdnImage: React.FunctionComponent<CdnImageProps> = (props) => {
   const { src, alt, width, height } = props;
