@@ -24,7 +24,6 @@ class App extends Component<AppProps> {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/items/:id" component={Item} />
-        <Route component={Home} />
       </Switch>
     );
     if (isLoggedIn) {
@@ -33,7 +32,6 @@ class App extends Component<AppProps> {
           <Route path="/profile" component={Profile} />
           <Route path="/items/:id" component={Item} />
           <Route path="/" exact component={Home} />
-          <Route component={Home} />
         </Switch>
       );
     }
