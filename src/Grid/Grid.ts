@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/macro';
-import { colors } from '../styles/variables/colors';
 import { sizes } from '../styles/variables/sizes';
 
 type GridItemProps = {

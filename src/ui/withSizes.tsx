@@ -21,9 +21,11 @@ type WithSizesState = {
   }
 };
 
+type AnyComponent = any;
+
 export const withSizes =
   (mappedSizesToProps: SizesToProps) =>
-  <T extends WithSizesState>(WrappedComponent: React.ComponentType<any>): any => {
+  <T extends WithSizesState>(WrappedComponent: React.ComponentType<AnyComponent>): AnyComponent => {
       class WithSizes extends React.Component<T, WithSizesState> {
         public defaultWidth = 1280;
         public defaultHeight = 900;

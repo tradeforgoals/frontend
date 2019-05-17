@@ -19,7 +19,7 @@ export const TextInput: React.FC<TextInputAllProps> = (props) => {
     if (props.onValueChange) {
       props.onValueChange(e);
     }
-  }
+  };
 
   return (
     <TextInputContainer>

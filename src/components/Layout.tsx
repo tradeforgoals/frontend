@@ -15,15 +15,6 @@ const customTheme = {
   },
   box: {
     extend: `max-width: 1240px; margin-left: auto; margin-right: auto;`
-  },
-  heading: {
-    level: {
-      '1': {
-        small: {
-          size: '60px'
-        }
-      }
-    }
   }
 };
 

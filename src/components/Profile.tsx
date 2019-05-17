@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import UserSettingsform from './UserSettingsForm';
 import { User } from '../user/UserState';
 import { withUser, WithUserProps } from '../user/withUser';
-import { Box } from 'grommet';
 import { Main, Layout, Sidebar } from '../styles/Layout';
 import { Heading } from '../ui/Heading/Heading';
 

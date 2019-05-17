@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Button, Heading, Image, Stack, Text } from 'grommet';
+import { Box, Button, Heading, Stack, Text } from 'grommet';
 import { Item } from './Items';
 import { CdnImage } from '../ui/Image/CdnImage';
 
