@@ -10,7 +10,8 @@ interface ButtonProps {
 }
 
 export const Button = styled.a<ButtonProps>`
-  display: flex;
+  display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   padding: 10px 20px;
   border: 0;
@@ -39,7 +40,7 @@ export const Button = styled.a<ButtonProps>`
 
   ${props => props.larger && css`
     padding: 10px 25px;
-    font-size: 16px;
+    font-size: 18px;
   `}
 
   ${props => props.inHeader && css`

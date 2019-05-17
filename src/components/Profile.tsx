@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import UserSettingsform from './UserSettingsForm';
 import { User } from '../user/UserState';
 import { withUser, WithUserProps } from '../user/withUser';
-import { Box, Heading } from 'grommet';
+import { Box } from 'grommet';
 import { Main, Layout, Sidebar } from '../styles/Layout';
+import { Heading } from '../ui/Heading/Heading';
 
 interface StateProps {
   isLoggedIn: boolean;
@@ -56,7 +57,8 @@ class Profile extends Component<ProfileProps, ProfileState> {
           </ul>
         </Sidebar>
         <Main padding>
-          <Heading level="1">My Profile</Heading>
+          <Heading level={1} >My Profile</Heading>
+          <br />
           {this.state.userDetails && (
             <UserSettingsform
               handleFormSubmit={this.handleEditProfileSubmit}

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Form } from 'grommet';
 import { TextInput } from '../Form/TextInput/TextInput';
-
 import { User } from '../user/UserState';
 import { Button } from '../ui/Button/Button';
+import { Grid, GridItem } from '../Grid/Grid';
+import { Heading } from '../ui/Heading/Heading';
 
 interface UserSettingsProps {
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -27,70 +28,89 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
         </p>
       )}
 
-      <TextInput
-        type="text"
-        id="username"
-        name="username"
-        label="Username"
-        value={values.displayName || ''}
-        disabled
-        onChange={handleFormChange}
-      />
+      <Grid>
+        <GridItem>
+          <TextInput
+            type="text"
+            id="username"
+            name="username"
+            label="Username"
+            value={values.displayName || ''}
+            disabled
+            onChange={handleFormChange}
+          />
+        </GridItem>
 
-      <TextInput
-        type="text"
-        id="firstname"
-        name="firstname"
-        label="Firstname"
-        value={values.firstName || ''}
-        required
-        onChange={handleFormChange}
-      />
+        <GridItem sizeL={6}>
+          <TextInput
+            type="text"
+            id="firstname"
+            name="firstname"
+            label="Firstname"
+            value={values.firstName || ''}
+            required
+            onChange={handleFormChange}
+          />
+        </GridItem>
 
-      <TextInput
-        type="text"
-        id="middleName"
-        name="middleName"
-        label="Middle name"
-        value={values.middleName || ''}
-        onChange={handleFormChange}
-      />
+        <GridItem sizeL={6}>
+          <TextInput
+            type="text"
+            id="middleName"
+            name="middleName"
+            label="Middle name"
+            value={values.middleName || ''}
+            onChange={handleFormChange}
+          />
+        </GridItem>
 
-      <TextInput
-        type="text"
-        id="lastname"
-        name="lastname"
-        label="Lastname"
-        value={values.lastName || ''}
-        required
-        onChange={handleFormChange}
-      />
+        <GridItem sizeL={6}>
+          <TextInput
+            type="text"
+            id="lastname"
+            name="lastname"
+            label="Lastname"
+            value={values.lastName || ''}
+            required
+            onChange={handleFormChange}
+          />
+        </GridItem>
 
-      <TextInput
-        type="text"
-        id="city"
-        name="city"
-        label="City"
-        value={values.city || ''}
-        onChange={handleFormChange}
-      />
+        <GridItem sizeL={6}>
+          <TextInput
+            type="email"
+            id="email"
+            name="email"
+            label="Email"
+            value={values.email || ''}
+            onChange={handleFormChange}
+          />
+        </GridItem>
+      </Grid>
+      <br /><br />
+      <Heading level={3}>Address</Heading>
+      <Grid>
+        <GridItem sizeL={6}>
+          <TextInput
+            type="text"
+            id="city"
+            name="city"
+            label="City"
+            value={values.city || ''}
+            onChange={handleFormChange}
+          />
+        </GridItem>
 
-      <TextInput
-        type="email"
-        id="email"
-        name="email"
-        label="Email"
-        value={values.email || ''}
-        onChange={handleFormChange}
-      />
-
-      <Button 
-        as="button" 
-        type="submit"
-        primary 
-        rounded
-        larger
-      >Save</Button>
+        <GridItem>
+          <Button
+            as="button"
+            type="submit"
+            primary
+            rounded
+            larger
+          >Save</Button>
+        </GridItem>
+      </Grid>
     </Form>
   );
 };
