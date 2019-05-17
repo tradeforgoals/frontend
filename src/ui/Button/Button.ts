@@ -5,6 +5,7 @@ import { colors } from '../../styles/variables/colors';
 interface ButtonProps {
   readonly primary?: boolean;
   readonly rounded?: boolean;
+  readonly larger?: boolean;
   readonly inHeader?: boolean;
 }
 
@@ -34,6 +35,11 @@ export const Button = styled.a<ButtonProps>`
 
   ${props => props.rounded && css`
     border-radius: 100px;
+  `}
+
+  ${props => props.larger && css`
+    padding: 10px 25px;
+    font-size: 16px;
   `}
 
   ${props => props.inHeader && css`

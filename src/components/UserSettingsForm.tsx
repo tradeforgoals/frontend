@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Form, FormField, TextInput } from 'grommet';
+import { Form } from 'grommet';
+import { TextInput } from '../Form/TextInput/TextInput';
 
 import { User } from '../user/UserState';
+import { Button } from '../ui/Button/Button';
 
 interface UserSettingsProps {
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -25,79 +27,70 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
         </p>
       )}
 
-      {values.photoURL && (
-        <img
-          src={values.photoURL}
-          alt={values.displayName || ''}
-          style={{ maxWidth: 100 }}
-        />
-      )}
+      <TextInput
+        type="text"
+        id="username"
+        name="username"
+        label="Username"
+        value={values.displayName || ''}
+        disabled
+        onChange={handleFormChange}
+      />
 
-      <FormField htmlFor="username" label="Username">
-        <TextInput
-          type="text"
-          id="username"
-          name="username"
-          placeholder="username"
-          disabled
-          value={values.displayName || ''}
-          onChange={handleFormChange}
-        />
-      </FormField>
-      <FormField htmlFor="firstname" label="Firstname">
-        <TextInput
-          type="text"
-          id="firstname"
-          name="firstname"
-          placeholder="firstname"
-          required
-          value={values.firstName}
-          onChange={handleFormChange}
-        />
-      </FormField>
-      <FormField htmlFor="middleName" label="Middel name">
-        <TextInput
-          type="text"
-          id="middleName"
-          name="middleName"
-          placeholder="middleName"
-          value={values.middleName}
-          onChange={handleFormChange}
-        />
-      </FormField>
-      <FormField htmlFor="lastname" label="Lastname">
-        <TextInput
-          type="text"
-          id="lastname"
-          name="lastname"
-          placeholder="lastname"
-          required
-          value={values.lastName}
-          onChange={handleFormChange}
-        />
-      </FormField>
-      <FormField htmlFor="city" label="City">
-        <TextInput
-          type="text"
-          id="city"
-          name="city"
-          placeholder="city"
-          required
-          value={values.city}
-          onChange={handleFormChange}
-        />
-      </FormField>
-      <FormField htmlFor="email" label="Email">
-        <TextInput
-          type="text"
-          id="email"
-          name="email"
-          placeholder="email"
-          value={values.email || ''}
-          readOnly
-        />
-      </FormField>
-      <Button primary type="submit" label="Save" />
+      <TextInput
+        type="text"
+        id="firstname"
+        name="firstname"
+        label="Firstname"
+        value={values.firstName || ''}
+        required
+        onChange={handleFormChange}
+      />
+
+      <TextInput
+        type="text"
+        id="middleName"
+        name="middleName"
+        label="Middle name"
+        value={values.middleName || ''}
+        onChange={handleFormChange}
+      />
+
+      <TextInput
+        type="text"
+        id="lastname"
+        name="lastname"
+        label="Lastname"
+        value={values.lastName || ''}
+        required
+        onChange={handleFormChange}
+      />
+
+      <TextInput
+        type="text"
+        id="city"
+        name="city"
+        label="City"
+        value={values.city || ''}
+        onChange={handleFormChange}
+      />
+
+      <TextInput
+        type="email"
+        id="email"
+        name="email"
+        label="Email"
+        value={values.email || ''}
+        onChange={handleFormChange}
+      />
+
+      <Button 
+        as="button" 
+        type="submit"
+        primary 
+        rounded
+        larger
+      >Save</Button>
     </Form>
   );
 };

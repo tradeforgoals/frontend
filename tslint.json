@@ -20,6 +20,7 @@
     ],
     "trailing-comma": false,
     "no-empty-interface": false,
+    "no-trailing-whitespace": false,
     "quotemark": {
       "severity": "error",
       "options": [
