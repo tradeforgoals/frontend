@@ -5,11 +5,13 @@ import {
   setItemAction,
   getItemFailed,
 } from './ItemActions';
-import axios from '../axios';
+import { Api } from '../api/Api';
 
 export function* GetItemSagaAction(action: GetItemAction) {
+  const api = new Api();
+  
   try {
-    const response = yield axios.get(`/items/${action.itemId}`);
+    const response = yield api.getItemById(action.itemId);
     yield put(setItemAction(response.data));
   } catch (e) {
     console.log(e);

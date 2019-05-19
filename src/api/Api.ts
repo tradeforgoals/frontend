@@ -1,5 +1,6 @@
 import { AdditionalUserData, User } from '../user/UserState';
 import { Category } from '../Categories/CategoriesState';
+import { Item } from '../items/Items';
 
 type PostType<T> = T & {
   id: string | number;
@@ -20,6 +21,14 @@ export class Api {
 
   public async getCategories(): Promise<Category[]> {
     return await this.getData(`/categories`);
+  }
+
+  public async getItems(): Promise<Item[]> {
+    return await this.getData(`/items`);
+  }
+
+  public async getItemById(id: number): Promise<Item> {
+    return await this.getData(`/items/${id}`);
   }
 
   private async getData(url: string) {

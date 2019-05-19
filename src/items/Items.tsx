@@ -4,6 +4,7 @@ import axios from '../axios';
 import Masonry from 'react-masonry-component';
 import { Advertisement } from '../Advertisements/Advertisement';
 import { MasonryItem } from '../ui/Grid/GridStyle';
+import { Api } from '../api/Api';
 
 export interface Item {
   id: number;
@@ -27,12 +28,13 @@ class Items extends Component {
   public componentDidMount = async () => {
     this.setState({ loading: true });
     try {
-      const result = await axios.get(`/items`);
-      if (typeof result.data !== 'object') {
+      const api = new Api();
+      const result = await api.getItems();
+      if (typeof result !== 'object') {
         // NOTE: This happens on Azure where /items returns the index page.
         throw new Error('invalid data, is the API returning json?');
       }
-      this.setState({ error: null, loading: false, items: result.data });
+      this.setState({ error: null, loading: false, items: result });
     } catch (e) {
       console.error(e);
       this.setState({

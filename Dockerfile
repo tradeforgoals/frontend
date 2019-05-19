@@ -13,7 +13,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-RUN npm run build
+RUN npm run build-production
 RUN npm run tslint
 RUN npm run test
 

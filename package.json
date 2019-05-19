@@ -44,6 +44,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-production": "npx cross-env NODE_ENV=production react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tslint": "tslint -p ./",
