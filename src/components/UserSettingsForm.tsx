@@ -16,8 +16,6 @@ interface UserSettingsProps {
 const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
 
-  console.log(values);
-
   if (!values) {
     return null;
   }

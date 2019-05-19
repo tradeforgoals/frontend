@@ -15,7 +15,7 @@ export function userReducer(state: UserState = initialState, action: UserActionT
     case TypeKeys.CLEAR_USER_DETAILS:
       return { ...state, userDetails: null, isLoggedIn: false };
     case TypeKeys.SET_USER_DETAILS:
-      return { ...state, userDetails: { ...state.userDetails, ...action.payload }, isLoggedIn: true, loading: false };
+      return { ...state, userDetails: { ...state.userDetails, ...action.user }, isLoggedIn: true, loading: false };
     default:
       return state;
   }

@@ -33,15 +33,17 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   private handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Updating user', this.state);
+    this.props.saveUserData(this.state.userDetails as User);
   }
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fieldName = e.target.name as keyof Partial<User>;
 
-    // @ts-ignore TS bug: https://github.com/Microsoft/TypeScript/issues/13948
     this.setState({
-      [fieldName]: e.target.value
+      userDetails: {
+        ...this.state.userDetails,
+        [fieldName]: e.target.value
+      }
     });
   }
 

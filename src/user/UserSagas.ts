@@ -1,9 +1,9 @@
 import { all, fork, put, ForkEffect, takeEvery } from 'redux-saga/effects';
-import { GetUserDetailsAction, TypeKeys, setUserDetailsAction } from './UserActions';
+import { GetUserDetailsAction, TypeKeys, setUserDetailsAction, SaveUserDetailsAction } from './UserActions';
 import { Api } from '../api/Api';
 import { AdditionalUserData, User } from './UserState';
 
-export function* getAdditionalUserDetails(action: GetUserDetailsAction) {
+function* getAdditionalUserDetails(action: GetUserDetailsAction) {
   const api = new Api();
 
   try {
@@ -11,6 +11,19 @@ export function* getAdditionalUserDetails(action: GetUserDetailsAction) {
     const combinedUserData: User = getCombinedUserData(action.user, data);
 
     yield put(setUserDetailsAction(combinedUserData));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* saveUserDetails(action: SaveUserDetailsAction) {
+  const api = new Api();
+
+  try {
+    yield api.saveUserDetails({
+      id: action.user.uid,
+      ...action.user
+    });
   } catch (e) {
     console.log(e);
   }
@@ -32,6 +45,7 @@ function getCombinedUserData(fbUserData: User, additionalData: AdditionalUserDat
 
 function* watchLoadUsers(): IterableIterator<ForkEffect> {
   yield takeEvery(TypeKeys.GET_USER_DETAILS, getAdditionalUserDetails);
+  yield takeEvery(TypeKeys.SAVE_USER_DETAILS, saveUserDetails);
 }
 
 export function* userSagas() {

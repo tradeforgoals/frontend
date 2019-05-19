@@ -5,7 +5,7 @@ type TextInputProps = {
   id: string;
   label: string | JSX.Element;
   className?: string;
-  onValueChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 type TextInputAllProps = React.InputHTMLAttributes<HTMLInputElement> & TextInputProps;
@@ -13,11 +13,11 @@ type TextInputAllProps = React.InputHTMLAttributes<HTMLInputElement> & TextInput
 export const TextInput: React.FC<TextInputAllProps> = (props) => {
   const [value, setValue] = useState(props.value || '');
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
 
-    if (props.onValueChange) {
-      props.onValueChange(e);
+    if (props.onChange) {
+      props.onChange(e);
     }
   };
 
@@ -35,7 +35,7 @@ export const TextInput: React.FC<TextInputAllProps> = (props) => {
           autoFocus={props.autoFocus}
           placeholder={props.placeholder}
           required={props.required}
-          onChange={onChange} />
+          onChange={onValueChange} />
         <TextInputLabel htmlFor={props.id}>{props.label}</TextInputLabel>
       </TextInputInner>
     </TextInputContainer>

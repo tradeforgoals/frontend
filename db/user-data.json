@@ -1,0 +1,18 @@
+[
+  {
+    "id": "sQXWbylNZZa7rvBbvDCzGvTeWhe2",
+    "firstName": "Jorik",
+    "lastName": "Barten",
+    "zipcode": "1111AA",
+    "houseNumber": "3",
+    "city": "Amsterdam"
+  },
+  {
+    "id": "abcz",
+    "firstName": "Thomas",
+    "lastName": "Jüsche",
+    "zipcode": "9999ZZ",
+    "houseNumber": "34",
+    "city": "Kaapstad"
+  }
+]
