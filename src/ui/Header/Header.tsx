@@ -43,7 +43,7 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
             <MenuDropdown title={<><MenuDropdownTriggerIcon><FiUser /></MenuDropdownTriggerIcon> Account</>}>
               {/*
             // @ts-ignore:styled-component TS issue */}
-              <MenuDropdownItem as={NavLink} to="/profile">My profile</MenuDropdownItem>
+              <MenuDropdownItem as={NavLink} to="/account/profile">My profile</MenuDropdownItem>
               <MenuDropdownItem><Logout>Logout</Logout></MenuDropdownItem>
             </MenuDropdown>
           </Box>

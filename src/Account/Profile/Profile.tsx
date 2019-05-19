@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import UserSettingsform from './UserSettingsForm';
-import { User } from '../user/UserState';
-import { withUser, WithUserProps } from '../user/withUser';
-import { Main, Layout, Sidebar } from '../styles/Layout';
-import { Heading } from '../ui/Heading/Heading';
+import { User } from '../../user/UserState';
+import { withUser, WithUserProps } from '../../user/withUser';
+import { Heading } from '../../ui/Heading/Heading';
+import { Account } from '../Account';
 
 interface StateProps {
   isLoggedIn: boolean;
@@ -49,27 +49,18 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   public render() {
     return (
-      <Layout>
-        <Sidebar>
-          <ul>
-            <li>Profile</li>
-            <li>Address</li>
-            <li>Trade history</li>
-          </ul>
-        </Sidebar>
-        <Main padding>
-          <Heading level={1} >My Profile</Heading>
-          <br />
-          {this.state.userDetails && (
-            <UserSettingsform
-              handleFormSubmit={this.handleEditProfileSubmit}
-              handleFormChange={this.handleFormChange}
-              values={this.state.userDetails}
-              error={null}
-            />
-          )}
-        </Main>
-      </Layout>
+      <Account>
+        <Heading level={1} >My profile</Heading>
+        <br />
+        {this.state.userDetails && (
+          <UserSettingsform
+            handleFormSubmit={this.handleEditProfileSubmit}
+            handleFormChange={this.handleFormChange}
+            values={this.state.userDetails}
+            error={null}
+          />
+        )}
+      </Account>
     );
   }
 }

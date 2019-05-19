@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Profile from './components/Profile';
+import Profile from './Account/Profile/Profile';
 import Item from './items/Item';
 import { RootState } from './store/RootState';
+import Address from './Account/Address/Address';
 // import Register from './containers/Register';
 
 interface StateProps {
@@ -29,7 +30,8 @@ class App extends Component<AppProps> {
     if (isLoggedIn) {
       routes = (
         <Switch>
-          <Route path="/profile" component={Profile} />
+          <Route path="/account/profile" component={Profile} />
+          <Route path="/account/address" component={Address} />
           <Route path="/items/:id" component={Item} />
           <Route path="/" exact component={Home} />
         </Switch>

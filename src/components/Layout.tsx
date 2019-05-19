@@ -22,7 +22,7 @@ interface HomeProps {
   isLoggedIn: boolean;
 }
 
-const Layout: React.SFC<HomeProps> = props => {
+const Layout: React.FC<HomeProps> = props => {
   const { children } = props;
 
   return (

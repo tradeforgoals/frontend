@@ -24,7 +24,6 @@ export const TextInput: React.FC<TextInputAllProps> = (props) => {
   return (
     <TextInputContainer>
       <TextInputInner hasValue={!!value}>
-        {/* <div className={classNames('a-text-input', className, value && 'a-text-input--has-value')}> */}
         <StyledTextInput
           id={props.id}
           name={props.name}
