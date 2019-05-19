@@ -9,6 +9,7 @@ import Profile from './Account/Profile/Profile';
 import Item from './items/Item';
 import { RootState } from './store/RootState';
 import Address from './Account/Address/Address';
+import { Trade } from './Trade/Trade';
 // import Register from './containers/Register';
 
 interface StateProps {
@@ -33,6 +34,7 @@ class App extends Component<AppProps> {
           <Route path="/account/profile" component={Profile} />
           <Route path="/account/address" component={Address} />
           <Route path="/items/:id" component={Item} />
+          <Route path="/trade/add" component={Trade} />
           <Route path="/" exact component={Home} />
         </Switch>
       );

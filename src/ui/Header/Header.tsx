@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Box } from 'grommet';
 import RegisterLogin from '../../user/RegisterLogin';
 import Logout from '../../user/Logout';
@@ -11,7 +11,7 @@ import { withSizes } from '../withSizes';
 import { sizes } from '../../styles/variables/sizes';
 import { Modal } from '../../ui/Modal/Modal';
 import { withUser, WithUserProps } from '../../user/withUser';
-import { Button, ButtonIcon } from '../Button/Button';
+import { ButtonIcon, Button } from '../Button/Button';
 import { FiPlus, FiUser } from 'react-icons/fi';
 import MenuDropdown from '../Menu/MenuDropdown';
 import { MenuDropdownTriggerIcon, MenuDropdownItem } from '../Menu/MenuDropdownStyle';
@@ -64,8 +64,9 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
             <SearchBar />
           }
 
-          {user.isLoggedIn &&
-            <Button href="/" primary rounded>
+        {user.isLoggedIn &&
+            // @ts-ignore 
+            <Button as={Link} to="/trade/add" primary rounded>
               <ButtonIcon>
                 <FiPlus />
               </ButtonIcon>
