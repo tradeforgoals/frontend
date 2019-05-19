@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { AdditionalUserData } from './UserState';
+import { AdditionalUserData, User } from './UserState';
 
 export enum TypeKeys {
   GET_USER_DETAILS = 'GET_USER_DETAILS',
@@ -9,7 +9,7 @@ export enum TypeKeys {
 
 export interface GetUserDetailsAction extends Action {
   type: TypeKeys.GET_USER_DETAILS;
-  userId: string;
+  user: User;
 }
 
 export interface ClearUserDetailsAction extends Action {
@@ -28,4 +28,4 @@ export type UserActionTypes =
 
 export const setUserDetailsAction = (payload: AdditionalUserData) => ({ type: TypeKeys.SET_USER_DETAILS, payload });
 export const clearUserDetailsAction = () => ({ type: TypeKeys.CLEAR_USER_DETAILS });
-export const getUserDetailsAction = (userId: string) => ({ type: TypeKeys.GET_USER_DETAILS, userId });
+export const getUserDetailsAction = (user: User) => ({ type: TypeKeys.GET_USER_DETAILS, user });

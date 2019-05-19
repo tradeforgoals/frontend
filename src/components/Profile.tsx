@@ -33,7 +33,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   private handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Updating user');
+    console.log('Updating user', this.state);
   }
 
   private handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {

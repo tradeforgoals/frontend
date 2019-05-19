@@ -6,10 +6,6 @@ import { RootState } from '../store/RootState';
 import { User, UserState } from './UserState';
 import { Omit } from '../types/omit';
 
-interface WithUserCustomProps {
-  getAdditionalUserData(userId: string): void;
-}
-
 interface StateProps {
   user: UserState;
 }
@@ -17,10 +13,10 @@ interface StateProps {
 interface DispatchProps {
   setUserDetails: (payload: User) => void;
   clearUserDetails: () => void;
-  getAdditionalUserData: (userId: string) => void;
+  getUserData: (user: User) => void;
 }
 
-export interface WithUserProps extends WithUserCustomProps, StateProps, DispatchProps { }
+export interface WithUserProps extends StateProps, DispatchProps { }
 
 export function withUser<T extends WithUserProps>(Component: React.ComponentType<T>):
 React.ComponentType<Omit<T, keyof WithUserProps>>  {
@@ -29,12 +25,8 @@ React.ComponentType<Omit<T, keyof WithUserProps>>  {
   class WrapperComponent extends React.Component<WrappedComponentProps> {
     public render() {
       return (
-        <Component {...this.props} getAdditionalUserData={this.getAdditionalUserData} />
+        <Component {...this.props} />
       );
-    }
-
-    private getAdditionalUserData = (userId: string): void => {
-      this.props.getAdditionalUserData(userId);
     }
   }
 
@@ -48,7 +40,7 @@ React.ComponentType<Omit<T, keyof WithUserProps>>  {
     return {
       setUserDetails: (payload: User) => dispatch(setUserDetailsAction(payload)),
       clearUserDetails: () => dispatch(clearUserDetailsAction()),
-      getAdditionalUserData: (userId: string) => dispatch(getUserDetailsAction(userId))
+      getUserData: (user: User) => dispatch(getUserDetailsAction(user))
     };
   };
 

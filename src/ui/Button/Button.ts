@@ -24,6 +24,10 @@ export const Button = styled.a<ButtonProps>`
     text-decoration: none;
   }
 
+  &:focus {
+    outline: 0;
+  }
+
   ${props => props.primary && css`
     background: ${colors.primary};
     color: #FFF;

@@ -10,8 +10,7 @@ class RegisterAccount extends React.Component<RegisterAccountAllProps> {
   public componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.props.setUserDetails(user);
-        this.props.getAdditionalUserData(user.uid);
+        this.props.getUserData(user);
       } else {
         setTimeout(() => {
           this.showLoginOptions();
