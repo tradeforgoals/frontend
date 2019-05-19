@@ -4,7 +4,6 @@ import { TextInput } from '../../Form/TextInput/TextInput';
 import { User } from '../../user/UserState';
 import { Button } from '../../ui/Button/Button';
 import { Grid, GridItem } from '../../Grid/Grid';
-import { Heading } from '../../ui/Heading/Heading';
 import { Select } from '../../Form/Select/Select';
 
 import countries from './countries.json';

@@ -4,7 +4,6 @@ import { TextInput } from '../../Form/TextInput/TextInput';
 import { User } from '../../user/UserState';
 import { Button } from '../../ui/Button/Button';
 import { Grid, GridItem } from '../../Grid/Grid';
-import { Heading } from '../../ui/Heading/Heading';
 
 interface UserSettingsProps {
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -86,7 +85,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             onChange={handleFormChange}
           />
         </GridItem>
-        
+
         <GridItem>
           <Button
             as="button"
