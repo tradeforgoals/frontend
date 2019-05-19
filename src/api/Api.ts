@@ -6,7 +6,7 @@ type PostType<T> = T & {
 };
 
 export class Api {
-  private readonly baseUrl = 'http://localhost:4000';
+  private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
     return await this.getData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`);

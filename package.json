@@ -50,7 +50,7 @@
     "tslint-report": "tslint -t json -o tslint-report.json --project . --force",
     "run-server": "node ./server.js",
     "run-server-dev": "nodemon ./server.js",
-    "mock-server": "json-server --watch db.js --port 4000"
+    "mock-server": "json-server --watch db.js --port 4000 --routes ./db/routes.json"
   },
   "eslintConfig": {
     "extends": "react-app"
