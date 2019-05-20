@@ -9,10 +9,10 @@ import { Api } from '../api/Api';
 
 export function* GetItemSagaAction(action: GetItemAction) {
   const api = new Api();
-  
+
   try {
     const response = yield api.getItemById(action.itemId);
-    yield put(setItemAction(response.data));
+    yield put(setItemAction(response));
   } catch (e) {
     console.log(e);
     yield put(getItemFailed(e.message));
