@@ -27,6 +27,10 @@ export class Api {
     return await this.getData(`/items`);
   }
 
+  public async getMyItems(): Promise<Item[]> {
+    return await this.getData(`/myItems`);
+  }
+
   public async getItemById(id: number): Promise<Item> {
     return await this.getData(`/items/${id}`);
   }

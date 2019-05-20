@@ -44,6 +44,9 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
               {/*
             // @ts-ignore:styled-component TS issue */}
               <MenuDropdownItem as={NavLink} to="/account/profile">My profile</MenuDropdownItem>
+              {/*
+            // @ts-ignore:styled-component TS issue */}
+              <MenuDropdownItem as={NavLink} to="/account/items">My Items</MenuDropdownItem>
               <MenuDropdownItem><Logout>Logout</Logout></MenuDropdownItem>
             </MenuDropdown>
           </Box>
