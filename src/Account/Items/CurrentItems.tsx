@@ -14,45 +14,36 @@ interface StateProps {
 interface ProfileProps extends StateProps, WithUserProps { }
 
 const api = new Api();
-const newItems: Item[] = [
-    {
-        id: 1,
-        title: 'Top Technology Item',
-        shortDescription: 'a very nice item',
-        imgSrc: 'http://lorempixel.com/300/300/technics',
-        category: 'Techology'
-    },
-    {
-        id: 2,
-        title: 'Top Transportation Item',
-        shortDescription: 'somewhat better item',
-        imgSrc: 'http://lorempixel.com/300/300/transport',
-        category: 'Techology'
-    },
-    {
-        id: 3,
-        title: 'top Fashion Item',
-        shortDescription: 'some other item',
-        imgSrc: 'http://lorempixel.com/300/300/fashion',
-        category: 'Fashion'
-    }
-];
+
+
 
 class CurrentItems extends Component<ProfileProps> {
     public state: any = {
-        userNew: this.props.user.userDetails
+        userNew: this.props.user.userDetails,
+        myItems: [{
+            id: 1,
+            title: 'Top Technology Item',
+            shortDescription: 'a very nice item',
+            imgSrc: 'http://lorempixel.com/300/300/technics',
+            category: 'Techology'
+        }]
     };
 
 
     public componentDidMount() {
-        const leden = api.getItems()
+        api.getMyItems().then((value) => {
+            this.setState({
+                myItems: value
+            });
+        })
+
         const {
             user: { userDetails }
         } = this.props;
 
-        this.setState({
-            userDetails
-        });
+
+        console.log(this.state.myItems);
+
 
         // for (let item in Items) {
         //     item
@@ -61,13 +52,23 @@ class CurrentItems extends Component<ProfileProps> {
 
 
     public render() {
-        const itemsList = newItems.map((item) => <Card {...item}></Card>);
+        const itemsList = this.state.myItems.map((item: any) => <Box>
+            <Heading level="1" alignSelf="center">
+                {item ? item.title : 'View item'}
+            </Heading>
+            {item && <Card {...item} />}
+        </Box>);
 
+        const tempStyle = { width: '400px' }
         return (
             <Box direction="column" align="center">
                 <Heading level="1">{this.state.userNew.displayName}'s Items</Heading>
                 <Main>
-                 {itemsList}
+                    <MainContent>
+                        <div style={tempStyle}>
+                            {itemsList}
+                        </div>
+                    </MainContent>
                 </Main>
             </Box>
 
