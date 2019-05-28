@@ -3,17 +3,19 @@ import { Form } from 'grommet';
 import { TextInput } from '../Form/TextInput/TextInput';
 import { Button } from '../ui/Button/Button';
 import { Grid, GridItem } from '../Grid/Grid';
-import { TradeType, Quality } from '../types/Trade';
+import { Quality } from '../types/Quality';
 import { Select } from '../Form/Select/Select';
+import { FileInput } from '../Form/FileInput/FileInput';
+import { Item } from '../items/Items';
 
 interface TradeProps {
   handleFormSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   handleFormChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  values: Partial<TradeType>;
+  values: Partial<Item>;
   error: string | null;
 }
 
-const TradeForm: React.SFC<TradeProps> = props => {
+const TradeFields: React.SFC<TradeProps> = props => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
 
   return (
@@ -32,7 +34,7 @@ const TradeForm: React.SFC<TradeProps> = props => {
             name="title"
             label="Title"
             value={values.title || ''}
-            disabled
+            required
             onChange={handleFormChange}
           />
         </GridItem>
@@ -40,10 +42,10 @@ const TradeForm: React.SFC<TradeProps> = props => {
         <GridItem>
           <TextInput
             type="text"
-            id="description"
-            name="description"
+            id="shortDescription"
+            name="shortDescription"
             label="Description"
-            value={values.description || ''}
+            value={values.shortDescription || ''}
             required
             onChange={handleFormChange}
           />
@@ -53,9 +55,9 @@ const TradeForm: React.SFC<TradeProps> = props => {
           <Select
             options={Quality}
             type="text"
-            id="category"
-            name="category"
-            label="Category"
+            id="quality"
+            name="quality"
+            label="Quality"
             value={values.quality || ''}
             onChange={handleFormChange}
           />
@@ -74,13 +76,13 @@ const TradeForm: React.SFC<TradeProps> = props => {
         </GridItem>
 
         <GridItem sizeL={6}>
-          <TextInput
-            type="text"
-            id="photo"
-            name="photo"
+          <FileInput
+            id="imgSrc"
+            name="imgSrc"
             label="Photo URL"
-            value={values.photo || ''}
+            value={values.imgSrc || ''}
             required
+            accept=".jpg,.jpeg.png,.gif"
             onChange={handleFormChange}
           />
         </GridItem>
@@ -99,4 +101,4 @@ const TradeForm: React.SFC<TradeProps> = props => {
   );
 };
 
-export default TradeForm;
+export default TradeFields;

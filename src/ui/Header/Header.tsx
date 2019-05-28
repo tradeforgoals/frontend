@@ -69,7 +69,7 @@ const Header: React.FunctionComponent<HeaderAllProps> = (props) => {
 
         {user.isLoggedIn &&
             // @ts-ignore 
-            <Button as={Link} to="/trade/add" primary rounded>
+            <Button as={Link} to="/trade/add" primary="true" rounded="true">
               <ButtonIcon>
                 <FiPlus />
               </ButtonIcon>

@@ -2,23 +2,23 @@ import React from 'react';
 import { Box, Heading, Text } from 'grommet';
 
 import Card from './Card';
-import WithItem, { ItemProps } from './WithItem';
+import { withItem, WithItemProps } from './WithItem';
 
-const Item = () => {
+interface ItemProps extends WithItemProps { }
+
+const Item: React.FC<ItemProps> = (props) => {
+  const { item, loading, error } = props;
+
   return (
-    <WithItem>
-      {({ error, loading, item }: ItemProps) => (
-        <Box>
-          <Heading level="1" alignSelf="center">
-            {item ? item.title : 'View item'}
-          </Heading>
-          {loading && <Text>Loading...</Text>}
-          {error && <Text>{error}</Text>}
-          {item && <Card {...item} />}
-        </Box>
-      )}
-    </WithItem>
+    <Box>
+      <Heading level="1" alignSelf="center">
+        {item ? item.title : 'View item'}
+      </Heading>
+      {loading && <Text>Loading...</Text>}
+      {error && <Text>{error}</Text>}
+      {item && <Card {...item} />}
+    </Box>
   );
 };
 
-export default Item;
+export default withItem(Item);

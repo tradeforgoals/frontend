@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { FirebaseProvider } from './firebase/FirebaseContext';
 import { configureStore } from './store/store';
+import history from './store/history';
 import { Normalize } from 'styled-normalize';
 
 import './index.css';
@@ -13,12 +14,12 @@ import './index.css';
 const app = (
   <Provider store={configureStore()}>
     <FirebaseProvider>
-      <BrowserRouter>
+      <Router history={history}>
         <>
           <Normalize />
           <App />
         </>
-      </BrowserRouter>
+      </Router>
     </FirebaseProvider>
   </Provider>
 );

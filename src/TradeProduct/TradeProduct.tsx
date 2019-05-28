@@ -1,20 +1,20 @@
 import React from 'react';
 import { Item } from '../items/Items';
 import { CdnImage } from '../ui/Image/CdnImage';
-import { Advertisement as StyledAdvertisement, AdvertisementOverlay } from './AdvertisementsStyle';
+import { TradeProduct as StyledTradeProduct, TradeProductOverlay } from './TradeProductStyle';
 import { Link } from 'react-router-dom';
 
-export const Advertisement: React.FC<Item> = (props) => {
+export const TradeProduct: React.FC<Item> = (props) => {
   const { id, title, imgSrc } = props;
 
   return (
-    <StyledAdvertisement>
+    <StyledTradeProduct>
       <Link to={`/items/${id}`}>
         <CdnImage src={imgSrc} alt={title} />
-        <AdvertisementOverlay>
+        <TradeProductOverlay>
           {title}
-        </AdvertisementOverlay>
+        </TradeProductOverlay>
       </Link>
-    </StyledAdvertisement>
+    </StyledTradeProduct>
   );
 };

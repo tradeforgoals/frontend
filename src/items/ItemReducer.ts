@@ -4,24 +4,17 @@ import { TypeKeys, ItemActionTypes, SetItemAction } from './ItemActions';
 export interface ItemState {
   readonly loading: boolean;
   readonly error: string | null;
+  readonly saveError: string | null;
   readonly items: Item[];
+  readonly item: Item | null;
 }
 
 const initialState: ItemState = {
   loading: false,
   error: null,
+  saveError: null,
   items: [],
-};
-
-const setItem = (state: ItemState, action: SetItemAction): ItemState => {
-  const newItems = [...state.items];
-  newItems[action.payload.id] = action.payload;
-  return {
-    ...state,
-    loading: false,
-    error: null,
-    items: newItems,
-  };
+  item: null
 };
 
 export function itemReducer(
@@ -33,8 +26,14 @@ export function itemReducer(
       return { ...state, loading: true, error: null };
     case TypeKeys.GET_ITEM_FAILED:
       return { ...state, loading: false, error: action.error };
+    case TypeKeys.GET_ITEMS:
+      return { ...state, loading: true, error: null };
+    case TypeKeys.SET_ITEMS:
+      return { ...state, loading: false, error: null, items: action.payload };
     case TypeKeys.SET_ITEM_DETAILS:
-      return setItem(state, action);
+      return { ...state, loading: false, error: null, item: action.payload };
+    case TypeKeys.SAVE_ITEM_FAILED:
+      return { ...state, loading: false, saveError: action.error };
     default:
       return state;
   }

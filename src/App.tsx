@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from './components/Layout';
 import Home from './components/Home';
@@ -9,7 +11,7 @@ import Profile from './Account/Profile/Profile';
 import Item from './items/Item';
 import { RootState } from './store/RootState';
 import Address from './Account/Address/Address';
-import { Trade } from './Trade/Trade';
+import TradeForm from './TradeProduct/TradeForm';
 import CurrentItems from './Account/Items/CurrentItems';
 // import Register from './containers/Register';
 
@@ -36,7 +38,7 @@ class App extends Component<AppProps> {
           <Route path="/account/address" component={Address} />
           <Route path="/account/items" component={CurrentItems} />
           <Route path="/items/:id" component={Item} />
-          <Route path="/trade/add" component={Trade} />
+          <Route path="/trade/add" component={TradeForm} />
           <Route path="/" exact component={Home} />
         </Switch>
       );
@@ -44,6 +46,7 @@ class App extends Component<AppProps> {
     return (
       <div className="App">
         <Layout isLoggedIn={isLoggedIn}>{routes}</Layout>
+        <ToastContainer />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Advertisement = styled.div`
+export const TradeProduct = styled.div`
   position: relative;
 
   img {
@@ -8,7 +8,7 @@ export const Advertisement = styled.div`
   }
 `;
 
-export const AdvertisementOverlay = styled.div`
+export const TradeProductOverlay = styled.div`
   position: absolute;
   left: 10px;
   right: 10px;
