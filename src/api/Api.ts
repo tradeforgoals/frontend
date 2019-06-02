@@ -1,4 +1,4 @@
-import { AdditionalUserData, User } from '../user/UserState';
+import { AdditionalUserData, User, BackEndUser } from '../user/UserState';
 import { Category } from '../Categories/CategoriesState';
 import { Item } from '../items/Items';
 import { getBase64 } from '../Form/FileInput/FileInputHelper';
@@ -11,13 +11,27 @@ export class Api {
   private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
+    console.log(userId);
     return await this.getData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`);
-    // return await this.getData(`/api/user/${userId}`);
+  //   return await this.getData(`/customers/${userId}`);
   }
 
   public async saveUserDetails(user: PostType<User>): Promise<void> {
-    return await this.putData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
-    // return await this.postData(`/user-data/${user.id}`, user);
+   return await this.putData(`/user-data//user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
+  //  const buser = this.mapUserToBackEndUser(user);
+  //  console.log(buser)
+  //    return await this.postData(`/customers/${user.id}`, buser);
+  }
+
+   
+  private mapUserToBackEndUser(user: User): BackEndUser {
+    return {
+      firstname: user.displayName ||  '',
+      lastname:  user.lastName,
+      email: user.email ||  '',
+      zipcode: user.zipcode,
+      housenumber: user.houseNumber
+    }
   }
 
   public async saveItem(item: Item): Promise<void> {
@@ -44,6 +58,16 @@ export class Api {
 
   public async getItemById(id: number): Promise<Item> {
     return await this.getData(`/items/${id}`);
+  }
+
+  public async saveUser(user: PostType<User>): Promise<void> {
+    return await this.postData(`/lid/`, user);
+    // return await this.postData(`/user-data/${user.id}`, user);
+  }
+
+  public async getUsers(): Promise<User[]> {
+    return await this.getData(`/lid/`);
+    // return await this.postData(`/user-data/${user.id}`, user);
   }
 
   private async getData(url: string) {

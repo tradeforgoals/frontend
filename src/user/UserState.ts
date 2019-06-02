@@ -1,4 +1,5 @@
 import * as firebase from 'firebase/app';
+import { string } from 'prop-types';
 
 export interface AdditionalUserData {
   username?: string;
@@ -19,4 +20,12 @@ export interface UserState {
   readonly isLoggedIn: boolean;
   readonly userDetails: Partial<User> | null;
   readonly error: string | null;
+}
+
+export interface BackEndUser {
+  firstname?: string;
+  lastname?: string;
+  email?: string;
+  zipcode?: string;
+  housenumber?: string;
 }
