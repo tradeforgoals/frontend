@@ -19,6 +19,16 @@ export class Api {
     // return await this.postData(`/user-data/${user.id}`, user);
   }
 
+  public async saveUser(user: PostType<User>): Promise<void> {
+    return await this.postData(`/lid/`, user);
+    // return await this.postData(`/user-data/${user.id}`, user);
+  }
+
+  public async getUsers(): Promise<User[]> {
+    return await this.getData(`/lid/`);
+    // return await this.postData(`/user-data/${user.id}`, user);
+  }
+
   public async getCategories(): Promise<Category[]> {
     return await this.getData(`/categories`);
   }

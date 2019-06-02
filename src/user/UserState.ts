@@ -10,6 +10,7 @@ export interface AdditionalUserData {
   houseNumber?: string;
   city?: string;
   country?: string;
+  id?: string;
 }
 
 export interface User extends firebase.UserInfo, AdditionalUserData {}

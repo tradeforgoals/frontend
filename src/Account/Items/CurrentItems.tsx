@@ -52,7 +52,8 @@ class CurrentItems extends Component<ProfileProps> {
 
 
     public render() {
-        const itemsList = this.state.myItems.map((item: any) => <Box>
+        const itemsList = this.state.myItems.map((item: any) => 
+        <Box>
             <Heading level="1" alignSelf="center">
                 {item ? item.title : 'View item'}
             </Heading>

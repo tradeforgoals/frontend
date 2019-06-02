@@ -3,10 +3,12 @@ import firebaseui from 'firebaseui';
 import * as firebase from 'firebase/app';
 import { withFirebase, WithFirebaseProps } from '../firebase/withFirebase';
 import { withUser, WithUserProps } from './withUser';
+import { Api } from '../api/Api';
 
 type RegisterAccountAllProps = WithFirebaseProps & WithUserProps;
 
 class RegisterAccount extends React.Component<RegisterAccountAllProps> {
+  private api = new Api();
   public componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -39,7 +41,8 @@ class RegisterAccount extends React.Component<RegisterAccountAllProps> {
       callbacks: {
         signInSuccessWithAuthResult: (authResult) => {
           // This user id should go in the DB
-          console.log(authResult.user.uid);
+          this.api.saveUser(authResult)
+          console.log(authResult);
 
           return false;
         }
