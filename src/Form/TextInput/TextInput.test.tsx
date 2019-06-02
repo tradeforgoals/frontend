@@ -37,24 +37,3 @@ it('Should be editable', () => {
     .value
   ).toEqual('newValue');
 });
-
-
-// it('Should have empty values by default', () => {
-//   const form = shallow(
-//     <UserSettingsForm
-//       handleFormSubmit={() => {
-//         //
-//       }}
-//       handleFormChange={() => {
-//         //
-//       }}
-//       values={null}
-//       error={null} />
-//   );
-
-//   expect(form.find('[name="username"]').props().value).toEqual('');
-//   expect(form.find('[name="firstname"]').props().value).toEqual('');
-//   expect(form.find('[name="middleName"]').props().value).toEqual('');
-//   expect(form.find('[name="lastname"]').props().value).toEqual('');
-//   expect(form.find('[name="email"]').props().value).toEqual('');
-// });
