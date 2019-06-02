@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import Items, { Item } from './Items';
+import { Item } from './Items';
 
 export enum TypeKeys {
   GET_ITEMS = 'GET_ITEMS',

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Box, Heading } from 'grommet';
 import { WithUserProps, withUser } from '../../user/withUser';
 import { Api } from '../../api/Api';
-import Items, { Item } from '../../items/Items';
-import Layout from '../../components/Layout';
 import { MainContent, Main } from '../../styles/Layout';
 import Card from '../../items/Card';
 
@@ -14,8 +12,6 @@ interface StateProps {
 interface ProfileProps extends StateProps, WithUserProps { }
 
 const api = new Api();
-
-
 
 class CurrentItems extends Component<ProfileProps> {
     public state: any = {
@@ -38,7 +34,7 @@ class CurrentItems extends Component<ProfileProps> {
         })
 
         const {
-            user: { userDetails }
+            // user: { userDetails }
         } = this.props;
 
 

@@ -1,5 +1,5 @@
 import { Item } from './Items';
-import { TypeKeys, ItemActionTypes, SetItemAction } from './ItemActions';
+import { TypeKeys, ItemActionTypes } from './ItemActions';
 
 export interface ItemState {
   readonly loading: boolean;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Main, Layout } from '../styles/Layout';
 import TradeFields from './TradeFields';
 import { Heading } from '../ui/Heading/Heading';
-import { Quality } from '../types/Quality';
 import { withItem, WithItemProps } from '../items/WithItem';
 import { Item } from '../items/Items';
 

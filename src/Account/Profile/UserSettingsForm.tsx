@@ -7,20 +7,16 @@ import { Grid, GridItem } from '../../Grid/Grid';
 
 interface UserSettingsProps {
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  values: Partial<User>;
+  handleFormChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  values: Partial<User> | null;
   error: string | null;
 }
 
 const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
   const { handleFormSubmit, handleFormChange, values, error } = props;
 
-  if (!values) {
-    return null;
-  }
-
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form className="form-exists" onSubmit={handleFormSubmit}>
       {error && (
         <p>
           Error: <strong>{error}</strong>
@@ -34,7 +30,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             id="username"
             name="username"
             label="Username"
-            value={values.displayName || ''}
+            value={values && values.displayName ? values.displayName : ''}
             disabled
             onChange={handleFormChange}
           />
@@ -46,7 +42,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             id="firstname"
             name="firstname"
             label="Firstname"
-            value={values.firstName || ''}
+            value={values ? values.firstName : ''}
             required
             onChange={handleFormChange}
           />
@@ -58,7 +54,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             id="middleName"
             name="middleName"
             label="Middle name"
-            value={values.middleName || ''}
+            value={values ? values.middleName : ''}
             onChange={handleFormChange}
           />
         </GridItem>
@@ -69,7 +65,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             id="lastname"
             name="lastname"
             label="Lastname"
-            value={values.lastName || ''}
+            value={values ? values.lastName : ''}
             required
             onChange={handleFormChange}
           />
@@ -81,7 +77,7 @@ const UserSettingsForm: React.SFC<UserSettingsProps> = props => {
             id="email"
             name="email"
             label="Email"
-            value={values.email || ''}
+            value={values && values.email ? values.email : ''}
             onChange={handleFormChange}
           />
         </GridItem>
