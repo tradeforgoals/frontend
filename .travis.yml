@@ -24,4 +24,4 @@ addons:
     token:
       secure: "$SONAR_TOKEN"
 script:
-  - npm run tslint-report && sonar-scanner
+  - npm run tslint-report && npm run test-report && sonar-scanner
