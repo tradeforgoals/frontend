@@ -23,6 +23,7 @@ export interface UserState {
 }
 
 export interface BackEndUser {
+  id: string;
   firstname?: string;
   lastname?: string;
   email?: string;

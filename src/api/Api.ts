@@ -8,27 +8,29 @@ type PostType<T> = T & {
 };
 
 export class Api {
-  private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
+  // private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
+  private readonly baseUrl = 'https://tradeforgoals-backend.azurewebsites.net/tradeforgoals/api';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
     console.log(userId);
-    return await this.getData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`);
-  //   return await this.getData(`/customers/${userId}`);
+    // return await this.getData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`);
+    return await this.getData(`/customers/${userId}`);
   }
 
   public async saveUserDetails(user: PostType<User>): Promise<void> {
-   return await this.putData(`/user-data//user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
-  //  const buser = this.mapUserToBackEndUser(user);
-  //  console.log(buser)
-  //    return await this.postData(`/customers/${user.id}`, buser);
+    // return await this.putData(`/user-data//user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
+    const buser = this.mapUserToBackEndUser(user);
+    console.log(buser)
+    return await this.postData(`/customers/`, buser);
   }
 
-   
+
   private mapUserToBackEndUser(user: User): BackEndUser {
     return {
-      firstname: user.displayName ||  '',
-      lastname:  user.lastName,
-      email: user.email ||  '',
+      id : user.uid,
+      firstname: user.displayName || '',
+      lastname: user.lastName,
+      email: user.email || '',
       zipcode: user.zipcode,
       housenumber: user.houseNumber
     }
@@ -36,7 +38,7 @@ export class Api {
 
   public async saveItem(item: Item): Promise<void> {
     // @ts-ignore Only for JsonServer
-    const base64Image = await getBase64(item.imgSrc); 
+    const base64Image = await getBase64(item.imgSrc);
 
     item.imgSrc = base64Image;
 
