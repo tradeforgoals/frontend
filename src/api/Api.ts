@@ -8,20 +8,20 @@ type PostType<T> = T & {
 };
 
 export class Api {
-  // private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
-  private readonly baseUrl = 'https://tradeforgoals-backend.azurewebsites.net/tradeforgoals/api';
+  private readonly baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api' : '/api';
+  private readonly remoteBaseUrl = 'https://tradeforgoals-backend.azurewebsites.net/tradeforgoals/api';
 
   public async getAdditionalUserDetails(userId: string): Promise<AdditionalUserData> {
     console.log(userId);
     // return await this.getData(`/user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`);
-    return await this.getData(`/customers/${userId}`);
+    return await this.getData(`${this.remoteBaseUrl}/customers/${userId}`);
   }
 
   public async saveUserDetails(user: PostType<User>): Promise<void> {
     // return await this.putData(`/user-data//user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
     const buser = this.mapUserToBackEndUser(user);
     console.log(buser)
-    return await this.postData(`/customers/`, buser);
+    return await this.postData(`${this.remoteBaseUrl}/customers/`, buser);
   }
 
 
@@ -42,39 +42,39 @@ export class Api {
 
     item.imgSrc = base64Image;
 
-    return await this.postData(`/items`, item);
+    return await this.postData(`${this.baseUrl}/items`, item);
     // return await this.postData(`/items`, item);
   }
 
   public async getCategories(): Promise<Category[]> {
-    return await this.getData(`/categories`);
+    return await this.getData(`${this.baseUrl}/categories`);
   }
 
   public async getItems(): Promise<Item[]> {
-    return await this.getData(`/items`);
+    return await this.getData(`${this.baseUrl}/items`);
   }
 
   public async getMyItems(): Promise<Item[]> {
-    return await this.getData(`/myItems`);
+    return await this.getData(`${this.baseUrl}/myItems`);
   }
 
   public async getItemById(id: number): Promise<Item> {
-    return await this.getData(`/items/${id}`);
+    return await this.getData(`${this.baseUrl}/items/${id}`);
   }
 
   public async saveUser(user: PostType<User>): Promise<void> {
-    return await this.postData(`/lid/`, user);
+    return await this.postData(`${this.baseUrl}/lid/`, user);
     // return await this.postData(`/user-data/${user.id}`, user);
   }
 
   public async getUsers(): Promise<User[]> {
-    return await this.getData(`/lid/`);
+    return await this.getData(`${this.baseUrl}/lid/`);
     // return await this.postData(`/user-data/${user.id}`, user);
   }
 
   private async getData(url: string) {
     try {
-      const response = await fetch(`${this.baseUrl}${url}`);
+      const response = await fetch(url);
       if (response.ok) {
         return response.json();
       }
@@ -89,7 +89,7 @@ export class Api {
 
   private async postData<TData>(url: string, data: TData, method = 'POST') {
     try {
-      const response = await fetch(`${this.baseUrl}${url}`, {
+      const response = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json'
