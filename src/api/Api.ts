@@ -56,12 +56,6 @@ export class Api {
     return await this.getData(`${this.baseUrl}/items`);
   }
 
-  public async getMyItems(): Promise<Item[]> {
-    const allItems = await this.getItems();
-
-    return await this.getData(`${this.baseUrl}/myItems`);
-  }
-
   public async getItemById(id: number): Promise<Item> {
     return await this.getData(`${this.baseUrl}/items/${id}`);
   }
@@ -117,7 +111,7 @@ export class Api {
   }
 
   public async denyTrade(myItem: Item, theirItem?: Item, 
-    myOwnershipItem?: ItemOwnership, theirOwnershipItem?: ItemOwnership): Promise<void> {
+      myOwnershipItem?: ItemOwnership, theirOwnershipItem?: ItemOwnership): Promise<void> {
       const patch: Partial<ItemOwnership> = { 
         tradeAgainst: 0,
         tradeStatus: TradeStatus.NOT_TRADING

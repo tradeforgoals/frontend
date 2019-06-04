@@ -9,7 +9,6 @@ import { ItemState } from './ItemReducer';
 import { Api } from '../api/Api';
 import { TradeStatus } from '../types/TradeStatus';
 import { ItemOwnership } from '../types/ItemOwnership';
-import { async } from 'q';
 
 interface DispatchProps {
   getAllItems: () => void;
@@ -55,7 +54,6 @@ export function withItem<T extends WithItemProps>(Component: React.ComponentType
         <Component
           {...this.props}
           getItemById={this.getItemById}
-          getMyItems={this.getMyItems}
           requestTrade={this.requestTrade}
           getTradeById={this.getTradeById}
           getTradeByTradeId={this.getTradeByTradeId}
