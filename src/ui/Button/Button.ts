@@ -4,6 +4,7 @@ import { colors } from '../../styles/variables/colors';
 
 interface ButtonProps {
   readonly primary?: boolean;
+  readonly secondary?: boolean;
   readonly rounded?: boolean;
   readonly larger?: boolean;
   readonly inHeader?: boolean;
@@ -34,6 +35,16 @@ export const Button = styled.a<ButtonProps>`
 
     &:hover {
       background-color: ${darken(.05, colors.primary)};
+      color: #FFF;
+    }
+  `}
+
+  ${props => props.secondary && css`
+    background: #AAA;
+    color: #FFF;
+
+    &:hover {
+      background-color: ${darken(.05, '#AAA')};
       color: #FFF;
     }
   `}

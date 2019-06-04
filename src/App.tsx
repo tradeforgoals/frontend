@@ -13,6 +13,8 @@ import { RootState } from './store/RootState';
 import Address from './Account/Address/Address';
 import TradeForm from './TradeProduct/TradeForm';
 import CurrentItems from './Account/Items/CurrentItems';
+import StartTradeForm from './Trade/StartTradeForm';
+import AcceptTradeForm from './Trade/AcceptTradeForm';
 // import Register from './containers/Register';
 
 interface StateProps {
@@ -39,6 +41,8 @@ class App extends Component<AppProps> {
           <Route path="/account/items" component={CurrentItems} />
           <Route path="/items/:id" component={Item} />
           <Route path="/trade/add" component={TradeForm} />
+          <Route path="/trade/start/:itemId" component={StartTradeForm} />
+          <Route path="/trade/accept/:itemId/" component={AcceptTradeForm} />
           <Route path="/" exact component={Home} />
         </Switch>
       );

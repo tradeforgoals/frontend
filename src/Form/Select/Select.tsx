@@ -3,7 +3,7 @@ import { SelectContainer, StyledSelect, SelectLabel, SelectInner } from './Selec
 
 type SelectProps = {
   id: string;
-  label: string | JSX.Element;
+  label?: string | JSX.Element;
   options: { [key: string]: string };
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
@@ -42,7 +42,9 @@ export const Select: React.FC<SelectAllProps> = (props) => {
               );
             })}
         </StyledSelect>
-        <SelectLabel htmlFor={props.id}>{props.label}</SelectLabel>
+        {props.label && 
+          <SelectLabel htmlFor={props.id}>{props.label}</SelectLabel>
+        }
       </SelectInner>
     </SelectContainer>
   );
