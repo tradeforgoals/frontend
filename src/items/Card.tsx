@@ -1,26 +1,41 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Box, Button, Heading, Stack, Text } from 'grommet';
+import { Link } from 'react-router-dom';
+import { Box, Heading, Text } from 'grommet';
 import { Item } from './Items';
 import { CdnImage } from '../ui/Image/CdnImage';
+import { Button } from '../ui/Button/Button';
 
-const Card = ({ id, title, shortDescription, imgSrc }: Item) => {
+const Card = ({
+  id,
+  category,
+  title,
+  shortDescription,
+  imgSrc,
+  quality,
+}: Item) => {
   return (
-    <Stack anchor="top" margin="medium">
-      <Box
-        background="light-2"
-        elevation="medium"
-        round="xsmall"
-      >
-        <CdnImage src={imgSrc} alt={title} />
-        <Heading level="3">{title}</Heading>
-        <Text>{shortDescription}</Text>
-
-        <NavLink to={`/items/${id}`}>
-          <Button primary label="View Item" fill />
-        </NavLink>
+    <Box background="white" wrap direction="row">
+      <Box width="medium" pad="small">
+        <CdnImage src={imgSrc} alt={title} width="100%" />
       </Box>
-    </Stack>
+      <Box width="medium" pad="small">
+        <Heading level="3">{title}</Heading>
+        <Text>
+          <b>description:</b> {shortDescription}
+        </Text>
+        <Text>
+          <b>Category:</b> {category}
+        </Text>
+        <Text>
+          <b>Quality:</b> {quality}
+        </Text>
+        <Link to={`/trade/start/${id}`}>
+          <Button as="button" primary larger>
+            Trade now!
+          </Button>
+        </Link>
+      </Box>
+    </Box>
   );
 };
 

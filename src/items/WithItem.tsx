@@ -56,6 +56,7 @@ export function withItem<T extends WithItemProps>(Component: React.ComponentType
           getItemById={this.getItemById}
           requestTrade={this.requestTrade}
           getTradeById={this.getTradeById}
+          getMyItems={this.getMyItems}
           getTradeByTradeId={this.getTradeByTradeId}
           acceptTrade={this.acceptTrade}
           denyTrade={this.denyTrade}
