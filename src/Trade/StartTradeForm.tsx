@@ -82,7 +82,7 @@ const StartTradeForm: React.FC<StartTradeFormProps> = (props) => {
 
       const myOwnedItemsObj: { [key: string]: string } = {};
       
-      myOwnedItems.map(item => {
+      myOwnedItems.forEach(item => {
         myOwnedItemsObj[item.id.toString()] = item.title;
       });
 

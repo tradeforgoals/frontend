@@ -1,5 +1,4 @@
 import * as firebase from 'firebase/app';
-import { string } from 'prop-types';
 
 export interface AdditionalUserData {
   username?: string;

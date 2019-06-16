@@ -4,7 +4,6 @@ import * as firebase from 'firebase/app';
 import { withFirebase, WithFirebaseProps } from '../firebase/withFirebase';
 import { withUser, WithUserProps } from './withUser';
 import { Api } from '../api/Api';
-import { User, AdditionalUserData } from './UserState';
 
 type RegisterAccountAllProps = WithFirebaseProps & WithUserProps;
 const api = new Api();

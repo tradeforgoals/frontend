@@ -6,7 +6,6 @@ import { Item } from '../items/Items';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { Alert } from '../ui/Alert/AlertStyle';
 import { withUser, WithUserProps } from '../user/withUser';
-import { Select } from '../Form/Select/Select';
 import { Button } from '../ui/Button/Button';
 import { toast } from 'react-toastify';
 import history from '../store/history';

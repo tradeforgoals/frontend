@@ -141,9 +141,9 @@ export class Api {
     }
   }
 
-  private async putData<TData>(url: string, data: TData) {
-    this.postData(url, data, 'PUT');
-  }
+  // private async putData<TData>(url: string, data: TData) {
+  //   this.postData(url, data, 'PUT');
+  // }
 
   private async patchData<TData>(url: string, data: TData) {
     this.postData(url, data, 'PATCH');
