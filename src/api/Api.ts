@@ -26,7 +26,7 @@ export class Api {
   }
 
   public async putUserDetails(user: PostType<User>): Promise<void> {
-    return await this.putData(`${this.remoteBaseUrl}/customers/`, user);
+   // return await this.putData(`${this.remoteBaseUrl}/customers/`, user);
   }
 
 
