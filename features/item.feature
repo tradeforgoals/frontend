@@ -7,6 +7,12 @@ Feature: Item Feature
     When you click on login
     Then a pop up should appear with three login options
 
+  Scenario: Shows homepage
+    Given homepage
+    When you click on catergory animals
+    Then we should navigate to the animals page
+  
+
   Scenario: Shows loading text when the item is loading
     Given item
     When the item is loading

@@ -24,10 +24,21 @@ var driver = new webdriver.Builder().forBrowser('chrome').build();
         });
 
         Then('a pop up should appear with three login options', function () {
-         return driver.findElement({id: 'authenticate'}).isDisplayed()
+         return  driver.wait(driver.findElement({id: 'authenticate'}).isDisplayed())
         });
 
 
+        When('you click on catergory animals', function (callback) {
+          driver.wait( driver.findElement({css: '.CategoriesStyle__CategoriesItem-sc-166b1uh-1'}).then(function(element) {
+            return element.click();
+          }));
+          callback();
+        });
+
+        Then('we should navigate to the animals page', function () {
+         return driver.getCurrentUrl() === 'http://localhost:3000/animals';
+        });
+       
         Given('item', function () {
           return 'pending'
            
@@ -127,4 +138,5 @@ var driver = new webdriver.Builder().forBrowser('chrome').build();
            // Write code here that turns the phrase above into concrete actions
            return 'pending';
          });
+         
 
