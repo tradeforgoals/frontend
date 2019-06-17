@@ -22,8 +22,11 @@ export class Api {
   public async saveUserDetails(user: PostType<User>): Promise<void> {
     // return await this.putData(`/user-data//user-data/sQXWbylNZZa7rvBbvDCzGvTeWhe2`, user);
     const buser = this.mapUserToBackEndUser(user);
-    console.log(buser)
     return await this.postData(`${this.remoteBaseUrl}/customers/`, buser);
+  }
+
+  public async putUserDetails(user: PostType<User>): Promise<void> {
+    return await this.putData(`${this.remoteBaseUrl}/customers/`, user);
   }
 
 
