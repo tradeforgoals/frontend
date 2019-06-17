@@ -2,6 +2,11 @@ Feature: Item Feature
 
   describes an item
 
+  Scenario: Shows homepage
+    Given homepage
+    When you click on login
+    Then a pop up should appear with three login options
+
   Scenario: Shows loading text when the item is loading
     Given item
     When the item is loading
@@ -26,3 +31,5 @@ Feature: Item Feature
     Given item
     When the item has an 'not found' error
     Then the message 'not found' is visible
+
+ 
