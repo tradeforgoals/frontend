@@ -16,7 +16,7 @@ export function* GetItemsSagaAction() {
   const api = new Api();
 
   try {
-    const response = yield api.getItems();
+    const response = yield api.getProducts();
     yield put(setItemsAction(response || []));
   } catch (e) {
     console.log(e);

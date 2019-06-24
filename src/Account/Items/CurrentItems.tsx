@@ -40,12 +40,9 @@ class CurrentItems extends Component<ProfileProps> {
     } = this.props;
 
 
-    console.log(this.state.myItems);
+ 
 
 
-    // for (let item in Items) {
-    //     item
-    // }
   }
 
 
@@ -57,7 +54,7 @@ class CurrentItems extends Component<ProfileProps> {
       {item && <Card {...item} />}
     </Box>);
 
-    const tempStyle = { width: '400px' }
+    const tempStyle = {  }
     return (
       <Box direction="column" align="center">
         <Heading level="1">{this.state.userNew.displayName}'s Items</Heading>

@@ -59,6 +59,10 @@ export class Api {
     return await this.getData(`${this.baseUrl}/items`);
   }
 
+  public async getProducts(): Promise<Item[]> {
+    return await this.getData(`${this.remoteBaseUrl}/products`);
+  }
+
   public async getItemById(id: number): Promise<Item> {
     return await this.getData(`${this.baseUrl}/items/${id}`);
   }
